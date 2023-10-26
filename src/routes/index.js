@@ -15,6 +15,7 @@ function route(app) {
     app.use('/favouritesong', favouritesongRouter)
     app.use('/login', loginRouter)
     app.use('/signup', signupRouter)
+    app.use('/song', signupRouter)
     app.use('/', homeRouter)
 }
 
