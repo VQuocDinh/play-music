@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <title>Music App</title>
+</head>
+
+<body class="p-relative">
+    <div class="main-container">
+        <div class="slide-page p-fixed t-0 l-0">
+            <div class="Menu">
+                <h1>ADMIN</h1>
+                <div class="menu-list">
+                    <a href="login.html" class="flex a-center">
+                        <i class="fa-solid fa-bars"></i>
+                        Home page
+                    </a>
+                    <a class="active user" href="#">
+                        <i class="fa-solid fa-users"></i>
+                        User Management</a>
+                    <a class="content" href="#">
+                        <i class="fa-solid fa-music"></i>
+                        Content Management
+                    </a>
+                    <a class="staticPay" href="#">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        Statistics And Payments
+                    </a>
+                    <a class="comment" href="#">
+                        <i class="fa-solid fa-comment"></i>
+                        Comments And Reviews
+                    </a>
+                </div>
+            </div>
+        </div>
+        <header class="flex a-center p-fixed t-0 r-0">
+            <div class="account flex a-center">
+                <img src="image/Ellipse 2.png" alt="">
+                <h4 class="name">Alex</h4>
+            </div>
+        </header>
+        <div class="main-page">
+            <!-- trang quản lí user  -->
+            <div class="user-management">
+                <h2>User Management</h2>
+                <div class="header flex a-center">
+                    <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                    <h3>User list</h3>
+                    <form action="" class="search search-user">
+                        <div class="input-group">
+                            <label for="search-user"> <i class="fa-solid fa-magnifying-glass"></i></label>
+                            <input id="search-user" type="text" placeholder="Search for user ">
+                        </div>
+                    </form>
+                    <div class="line"></div>
+                </div>
+                <div class="user-list"></div>
+                <button type="button" class=" btns btn-add-user">Add User</button>
+            </div>
+            <!-- trang quản lí nội dung song playlist album -->
+            <div class="content-management">
+                <h2>Content Management</h2>
+                <!-- quản lí bài hát có thêm xoá sửa -->
+                <div class="Music-management">
+                    <h4>Music</h4>
+                    <div class="header flex a-center">
+                        <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                        <h3>Song list</h3>
+                        <form action="" class="search">
+                            <div class="input-group">
+                                <label for="search-user"> <i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input id="search-user" type="text" placeholder="Search for Music ">
+                            </div>
+                        </form>
+                        <div class="line"></div>
+                    </div>
+                    <div class="music-list flex a-center j-between"></div>
+                    <button type="button" class=" btns btn-add-music">Add music</button>
+
+                </div>
+                <!-- quản lí playlist có thể thêm xoá sửa -->
+                <div class="playlist-management">
+                    <h4>Playlist Management</h4>
+                    <div class="header flex a-center">
+                        <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                        <h3>Play list</h3>
+                        <form action="" class="search search-playlist">
+                            <div class="input-group">
+                                <label for="search-playlist"> <i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input id="search-playlist" type="text" placeholder="Search for play list ">
+                            </div>
+                        </form>
+                        <div class="line"></div>
+                        <div class=" style playlist flex a-center j-between "></div>
+
+                    </div>
+                    <button type="button" class=" btns btn-add-playlist">Add Playlist</button>
+                </div>
+                <!-- quản lí album có thể thêm xoá sửa -->
+                <div class="album-management">
+                    <h4>Album Management</h4>
+                    <div class="header flex a-center">
+                        <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                        <h3>Ablum list</h3>
+                        <form action="" class="search search-album">
+                            <div class="input-group">
+                                <label for="search-album"> <i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input id="search-album" type="text" placeholder="Search for album">
+                            </div>
+                        </form>
+                        <div class="line"></div>
+                        <div class=" style album flex a-center j-between "></div>
+
+                    </div>
+                    <button type="button" class=" btns btn-add-album">Add Album</button>
+                </div>
+                <!-- quản lí artist có thể thêm xoá sửa -->
+                <div class="artist-management">
+                    <h4>Artist Management</h4>
+                    <div class="header flex a-center">
+                        <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
+                        <h3>Aritst list</h3>
+                        <form action="" class="search search-artist">
+                            <div class="input-group">
+                                <label for="search-album"> <i class="fa-solid fa-magnifying-glass"></i></label>
+                                <input id="search-artist" type="text" placeholder="Search for artist">
+                            </div>
+                        </form>
+                        <div class="line"></div>
+                        <div class=" style artist flex a-center j-between "></div>
+
+                    </div>
+                    <button type="button" class=" btns btn-add-artist">Add Artist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- modal chỉnh sửa và thêm user -->
+    <div class="modal modal-3">
+        <div class="modal-style user-information flex a-center j-center">
+            <h3>User Information</h3>
+            <img src="image/Rectangle 33.png" alt="" class="avatar-playlist">
+            <label for="avatar-user" class="lable-edit">Edit Photo</label>
+            <input type="file" name="avatar-playlist" id="avatar-user" accept="image/png, image/jpeg" />
+            <form action="" class="flex a-center j-between">
+                <div class="input-group">
+                    <label for="name-user">Name</label>
+                    <input id="name-user" type="text" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label for="email">Your Email</label>
+                    <input id="email" type="text" placeholder="Your Email">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <label for="birthday">Your Birthday</label>
+                    <input id="birthday" type="text" placeholder="Your Birthday">
+                </div>
+            </form>
+            <button class="btn-confirm">
+                Confirm
+            </button>
+        </div>
+    </div>
+    <!-- modal chỉnh sửa và thêm playlist -->
+    <div class="modal modal-4">
+        <div class="modal-style playlist-information flex a-center j-center">
+            <h3>Playtlist Information</h3>
+            <img src="image/Rectangle 5.png" alt="" class="avatar-playlist">
+            <label for="avatar-playlist" class="lable-edit">Edit Photo</label>
+            <input type="file" name="avatar-playlist" id="avatar-playlist" accept="image/png, image/jpeg" />
+            <form action="" class="flex a-center j-between">
+                <div class="input-group">
+                    <label for="name-playlist">Name Playlist</label>
+                    <input id="name-playlist" type="text" placeholder="Name Playlist">
+                </div>
+                <div class="input-group">
+                    <label for="type-playlist">Kind of playlist</label>
+                    <input id="type-playlist" type="text" placeholder="Kind of playlist">
+                </div>
+            </form>
+            <button class="btn-confirm-playlist">
+                Confirm
+            </button>
+        </div>
+    </div>
+    <div class="modal modal-5">
+        <div class="modal-style album-information flex a-center j-center">
+            <h3>Album Information</h3>
+            <img src="image/Rectangle 5.png" alt="" class="avatar-album">
+            <label for="avatar-ablum" class="lable-edit">Edit Photo</label>
+            <input type="file" name="avatar-ablum" id="avatar-ablum" accept="image/png, image/jpeg" />
+            <form action="" class="flex a-center j-between">
+                <div class="input-group">
+                    <label for="name-ablum">Name Ablum</label>
+                    <input id="name-ablum" type="text" placeholder="Name Ablum">
+                </div>
+                <div class="input-group">
+                    <label for="artist-album">Artist Ablum</label>
+                    <input id="artist-album" type="text" placeholder="Artist Ablum">
+                </div>
+            </form>
+            <button class="btn-confirm-album">
+                Confirm
+            </button>
+        </div>
+    </div>
+    <div class="modal modal-6">
+        <div class="modal-style artist-information flex a-center j-center">
+            <h3>Artist Information</h3>
+            <img src="image/Rectangle 5.png" alt="" class="avatar-artist">
+            <label for="avatar-artist" class="lable-edit">Edit Photo</label>
+            <input type="file" name="avatar-artist" id="avatar-artist" accept="image/png, image/jpeg" />
+            <form action="" class="flex a-center j-between">
+                <div class="input-group">
+                    <label for="name-artist">Name Artist</label>
+                    <input id="name-artist" type="text" placeholder="Name Artist">
+                </div>
+                <div class="input-group">
+                    <label for="musical-artist">Musical Artist</label>
+                    <input id="musical-artist" type="text" placeholder="Musical Artist">
+                </div>
+            </form>
+            <button class="btn-confirm-artist">
+                Confirm
+            </button>
+        </div>
+    </div>
+    <div class="modal modal-7">
+        <div class="modal-style music-information flex a-center j-center">
+            <h3>Music Information</h3>
+            <img src="image/Rectangle 33.png" alt="" class="avatar-music">
+            <label for="avatar-music" class="lable-edit">Edit Photo</label>
+            <input type="file" name="avatar-music" id="avatar-music" accept="image/png, image/jpeg" />
+            <form action="" class="flex a-center j-between">
+                <div class="input-group">
+                    <label for="name-Music">Name</label>
+                    <input id="name-Music" type="text" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label for="aritst">Artist</label>
+                    <input id="aritst" type="text" placeholder="Aritst">
+                </div>
+                <div class="input-group">
+                    <label for="kind-of-song">Kind Of Song</label>
+                    <input id="kind-of-song" type="text" placeholder="Kind Of Song">
+                </div>
+                <div class="input-group">
+                    <label for="minute">Minute</label>
+                    <input id="minute" type="text" placeholder="Your Birthday">
+                </div>
+            </form>
+            <button class="btn-confirm-music">
+                Confirm
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="/js/admin.js"></script>
+</body>
+
+
+
+
+</html>
