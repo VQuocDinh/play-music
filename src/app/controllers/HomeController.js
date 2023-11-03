@@ -3,7 +3,7 @@ const Search = require('../models/Home');
 
 const HomeController = {
     index(req, res) {
-        res.render('home') 
+        res.render('home')
     },
 
     search(req, res) {

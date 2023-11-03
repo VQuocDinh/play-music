@@ -5,6 +5,8 @@ const messageEle = document.querySelector(".message");
 const btnforget = document.querySelector(".forget")
 const ModalEle = document.querySelector(".modal")
 const btnOk = document.querySelector(".ok")
+    // const loginController = require('')
+    // loginController.loginuser
 console.log(emailEle)
 console.log(passwordEle)
 const users = [{
@@ -29,27 +31,12 @@ btnLogin.addEventListener("click", function(e) {
     const passwordInput = passwordEle.value;
 
     if (!emailInput || !passwordInput) {
-        alert("invalid input");
-        return;
-    }
-
-    const idx = users.findIndex(
-        (val) => val.email === emailInput && val.password === passwordInput
-    );
-    if (idx === -1) {
         messageEle.textContent = "Login Fail";
         messageEle.classList.add("login-fail");
         return;
     }
+    messageEle.textContent = "";
 
-    const ktrole_user = users.findIndex(
-        (val) => val.email === emailInput && val.password === passwordInput && val.role === "user"
-    )
-    if (ktrole_user === -1) {
-        window.location.href = "../singin/singin.html";
-        return;
-    }
-    window.location.href = "../index.html";
 });
 
 const LoginEle = document.querySelector(".a-login");
