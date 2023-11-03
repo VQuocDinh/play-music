@@ -88,7 +88,6 @@ button {
             color: $text-color-bold;
             font-size: 1em;
           }
-
           a {
             color: $text-color;
             font-size: 0.7em;
@@ -199,7 +198,7 @@ header {
   padding-bottom: 75px;
   min-height: 100vh;
   padding-top: 75px;
-
+  margin-top: 500px;
   .banner {
     width: 100%;
     margin: auto;
@@ -291,7 +290,6 @@ header {
 
   .section-1 {
     padding: 20px;
-
     .made-for-you {
       .title {
         h2 {
@@ -304,6 +302,7 @@ header {
           color: $text-color;
           font-size: 1em;
           position: relative;
+          margin-left: auto;
 
           &::after {
             content: "";
@@ -328,6 +327,11 @@ header {
             }
           }
         }
+        i {
+          color: $text-color;
+          font-size: 1.5em;
+
+        }
       }
 
       .list-music {
@@ -338,8 +342,8 @@ header {
           padding: 10px;
           border-radius: 10px;
           transition: 0.3s;
-          
-
+          max-width: 20%;
+          height: 120px;
           cursor: pointer;
 
           a {
@@ -353,6 +357,7 @@ header {
             h3 {
               color: $text-color-bold;
               font-size: 1em;
+              max-width: 120px;
             }
 
             a {
@@ -1032,4 +1037,12 @@ body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: $bg-color;
+} 
+
+#main-header {
+  transition: 0.5s;
+}
+
+#home-mainpage {
+  transition: 0.5s;
 }

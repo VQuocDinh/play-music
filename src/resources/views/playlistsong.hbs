@@ -1,15 +1,19 @@
 <div class="main-page">
     <div class="album-detail-container flex j-between">
+        
+        {{#each playlist}}
         <div class="album-poster flex  a-center">
-            <a class="poster" href=""><img src="" alt=""></a>
-            <h3 class="name-album">{{playlistsong.playlist_name}}</h3>
-            <a href="" class="author">Derva</a>
+            <a class="poster" href=""><img src="{{Image}}" alt=""></a>
+            <h3 class="name-album">{{Name}}</h3>
+            <a href="" class="author">{{Describe}}</a>
             <button class="play">Tiếp tục phát</button>
             <div class="btns">
                 <button class="delete "><i class="fa-solid fa-xmark"></i></button>
                 <button class="more "><i class="fa-solid fa-ellipsis"></i></button>
             </div>
+            
         </div>
+        {{/each}}
         <div class="album-song">
             <div class="header flex a-center">
                 <button class="arrange"><i class="fa-solid fa-arrow-up-z-a"></i></button>
@@ -20,7 +24,7 @@
                 {{#each playlistsong}}
                 <div class="media-item flex a-center j-between">
                     <div class="media-left flex a-center ">
-                        <a href=""><img src="{{song_img}}" alt=""></a>
+                        <a href="/song/{{song_id}}"><img src="{{song_img}}" alt=""></a>
                         <div class="detail">
                             <h3>{{song_name}}</h3>
                             <a href="">{{artist_name}}</a>

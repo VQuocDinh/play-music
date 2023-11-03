@@ -378,6 +378,7 @@ button {
           background-color: #f17a37;
           box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, 0.53) inset; }
 
+
 .btnss button i {
   color: #ffdecd;
   font-size: 1em;
@@ -389,3 +390,95 @@ button {
   cursor: pointer; }
   .btnss button i:hover {
     background-color: #f17a37; }
+
+/*  Thanh time nhạc */
+.progress-area {
+  height: 6px;
+  width: 100%;
+  background: var(--slate-100);
+  border-radius: 50px;
+  cursor: pointer;
+  background:#615b5b;
+}
+
+.progress-area .progress-bar {
+  position: relative;
+  height: inherit;
+  border-radius: inherit;
+  width: 0%;
+  background: rgb(178, 152, 19);
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background: var(--greenshadow);
+  border-radius: inherit;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.progress-area:hover .progress-bar::before {
+  opacity: 1;
+}
+.progress-area:hover .progress-bar::before {
+opacity: 1;
+}
+
+.timer-duration {
+  margin-top: 2px;
+}
+.timer-duration span {
+  font-size: 13px;
+}
+
+/* lyric */
+.music-lyric {
+  top:100px;
+  position: absolute;
+  width: 80%;
+  left:220;
+   bottom: 30%;
+   height:82%;
+  pointer-events: none;
+  padding: 20px 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background: var(--slate-800);
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  transition: all 0.2s ease-in-out;
+  background-color: #263665;
+  color :white;
+  overflow-y: auto; 
+}
+
+.music-lyric.show {
+  left: -100%;
+}
+
+.music-lyric .lyrics {
+  max-height: 100%;
+  border-radius: 4px;
+  overflow-y: auto;
+  font-size: 26px;
+  color:white;
+  overflow-y: auto; 
+
+}
+.music-lyric .lyrics::-webkit-scrollbar {
+  width: 0px;
+}
+.music-lyric .lyrics span {
+  display: block;
+  color: var(--lightblack);
+  font-size: 14px;
+  line-height: 22px;
+  transition: 0.2s ease;
+  overflow-y: auto; 
+}
+

@@ -14,6 +14,7 @@ router.get("/admin/:UserID/edit", usermanagementController.edit);
 router.post("/admin/:UserID/edit", usermanagementController.update);
 router.post("/admin/:UserID", usermanagementController.deleteUser);
 
+
 //quản lí bài hát
 router.get("/admin/songmanagement", ContentManagementController.getAllMusic);
 router.post(
@@ -33,6 +34,7 @@ router.post(
   "/admin/songmanagement/:SongID",
   ContentManagementController.deleteSong
 );
+
 
 // quản lí playlist
 router.get(
@@ -73,6 +75,17 @@ router.get("/user", (req, res) => {
     layout: false,
   });
 });
+// router.post('/', (req, res) => {
+//     // Render trang đăng nhập mà không sử dụng layout và các partials
+//     res.render('login', {
+//         layout: false, // Không sử dụng layout
+//     });
+// });
+
+router.post('/', loginController.loginuser)
+router.get('/admin')
+
+
 
 router.get("/", (req, res) => {
   // Render trang đăng nhập mà không sử dụng layout và các partials

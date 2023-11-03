@@ -443,3 +443,27 @@ header {
           color: #333; }
         .modal-2 .addToPlaylist .list-item:hover h3 {
           color: #333; }
+/*  */
+.play-pause {
+  color:#ffdecd;
+
+}
+.play-pause::before {
+  color:white;
+  content: "";
+  
+
+}
+.play-pause i {
+  background: inherit;
+
+  
+  color: white;
+}
+/* Time */
+.timer-duration {
+  margin-top: 2px;
+}
+.timer-duration span {
+  font-size: 13px;
+}
