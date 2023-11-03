@@ -9,6 +9,13 @@ router.get('/', (req, res) => {
         layout: false, // Không sử dụng layout
     });
 });
+router.post('/', signupController.signupuser, (req, res) => {
+    // Render trang đăng nhập mà không sử dụng layout và các partials
+
+    res.render('signup', {
+        layout: false, // Không sử dụng layout
+    });
+});
 
 
 module.exports = router;

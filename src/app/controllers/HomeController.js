@@ -7,6 +7,8 @@ const songData = [];
 
 
 const HomeController = {
+    index(req, res) {
+        res.render('home')
     getHomePage: (req, res) => {
         Playlist.getAll((err, playlists) => {
             if (err) {

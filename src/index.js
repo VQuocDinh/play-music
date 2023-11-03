@@ -245,7 +245,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Midleware xử lý dữ liệu từ form sublit lên
 app.use(express.urlencoded({
-  extended: true //npm body parser
+    extended: true //npm body parser
 }))
 
 app.use(express.json())
@@ -255,7 +255,7 @@ app.use(morgan('combined'))
 
 //Template engine
 app.engine('hbs', exphbs.engine({
-  extname: '.hbs'
+    extname: '.hbs'
 }));
 
 app.set('view engine', 'hbs');
@@ -283,5 +283,6 @@ route(app);
 
 
 app.listen(port, () => {
+
   console.log(`App listening on port http://localhost:${port}`)
 });

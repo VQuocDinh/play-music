@@ -15,26 +15,28 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/login.css">
+    <title>Node.js Button Event</title>
 
 </head>
 
 <body>
 
 
-    <form class="flex a-center j-cente" action="/login/admin" >
+    <form class="flex a-center j-cente" 
+     method="post" action="/login" >
 
         <div class="form">
             <nav class="login-with flex a-center j-center">
                 <h1 class="flex a-center j-center">LOGIN </h1>
                 <ul>
                     <li>
-                        <a href=""><img src="googlelogo.png" alt="">
+                        <a href=""><img src="/img/googlelogo.png" alt="">
                             <p>Continue with Google </p>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="facebooklogo.png" alt="">
+                            <img src="/img/facebooklogo.png" alt="">
                             <p>Continue with Facebook</p>
                         </a>
                     </li>
@@ -59,8 +61,12 @@
             </div>
             <div class="input">
                 <input type="text" placeholder="E-mail Address" class="
-                E-mail ">
-                <input type="password" placeholder="Password" class="password">
+                E-mail " name="email" >
+                <input type="password" placeholder="Password" class="password" name="password">
+                <div style="color: red;  margin-top: 16px;" lass="error-message">
+
+     {{ errorMessage }}
+                </div>
             </div>
             <div class="remember-me">
                 <input type="checkbox" class="remember" name="remember" id="remember">
@@ -70,8 +76,10 @@
 
                 
                     <div class="log">
+                        <div class="btn-login">
 
-                        <button type="submit" class="btn-login">Login</button>
+                        <button  type="supmit" class="btn-login" >Login</button>
+                        </div>
                     </div>
 
                 
@@ -83,7 +91,9 @@
                 </div>
 
             </div>
-            <div class="message"></div>
+            <div class="errorMessage"></div>
+             
+           
             <footer class="flex">
                 <p class="flex a-center j-center">Or login with </p>
                 <a href="">Facebook</a>
@@ -103,6 +113,7 @@
             <div class="message-modal"></div>
             <div class="button flex j-end">
                 <buttom class="btn ok">ok</buttom>
+               
 
                 <buttom class="btn cancel">cancel</buttom>
             </div>
@@ -112,7 +123,7 @@
 
 
 </body>
-{{!--
-<script src="/js/login.js"></script> --}}
+
+<script src="/js/login.js"></script>
 
 </html>
