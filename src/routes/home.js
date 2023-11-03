@@ -6,7 +6,8 @@ const homeController = require('../app/controllers/HomeController')
 
 router.get('/play/:songName', homeController.index)
 
+router.post('/receive_data', homeController.receiveData)
 router.get('/search', homeController.search)
-router.get('/', homeController.index)
+router.get('/', homeController.getHomePage)
 
 module.exports = router;

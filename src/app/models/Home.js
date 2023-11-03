@@ -6,6 +6,9 @@ const Home = {
     const value = `%${searchTerm}%`;
     db.query(query, value, callback);
   },
+
+  
+  
 };
 
 module.exports = Home;

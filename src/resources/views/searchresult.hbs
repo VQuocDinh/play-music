@@ -1,6 +1,6 @@
 <div class="main-page">
     <section>
-        <div class="title-2 flex a-center">
+        {{!-- <div class="title-2 flex a-center">
             <div class="Song style active">
                 <h4>Song</h4>
             </div>
@@ -11,19 +11,19 @@
                 <h4>Playlist</h4>
             </div>
             <div class="line"></div>
-        </div>
+        </div> --}}
         <div class="media-list">
-            {{#each searchresults}}
+            {{#each searchResults}}
             <div class="media-item flex a-center j-between">
                 <div class="media-left flex a-center ">
-                    <a href=""><img src="{{song_img}}" alt=""></a>
+                    <a href=""><img src="https://i.scdn.co/image/d6b657e803f59ddad8600f5fafe402b1d808f12d" alt=""></a>
                     <div class="detail">
-                        <h3>{{song_name}}</h3>
-                        <a href="">{{artist_name}}</a>
+                        <h3>{{song}}</h3>
+                        <a href="">{{artist}}</a>
                     </div>
                 </div>
                 <div class="media-right">
-                    <span class="time">{{song_time}}</span>
+                    <span class="time"></span>
                     <button class="heart "><i class="fa-solid fa-heart like"></i></button>
                     <button class="plus"><i class="fa-solid fa-plus "></i></button>
                 </div>
