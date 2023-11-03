@@ -397,7 +397,7 @@ button {
               color: $text-color;
               font-size: 1em;
             }
-            a {
+            span {
               color: $text-color;
               font-size: 0.7em;
             }
@@ -433,6 +433,26 @@ button {
     }
   }
 }
+
+
+.btnss {
+  button {
+    i {
+      color: $text-color;
+      font-size: 1em;
+      padding: 10px;
+      background-color: $bg-icon-color;
+      border-radius: 50%;
+      margin-right: 5px;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        background-color: $hover-color;
+      }
+    }
+  }
+}
+
 //  thanh nhạc
 .progress-area {
   height: 6px;
@@ -464,3 +484,4 @@ button {
 .progress-area:hover .progress-bar::before {
   opacity: 1;
 }
+

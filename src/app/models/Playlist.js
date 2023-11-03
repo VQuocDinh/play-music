@@ -1,8 +1,8 @@
-const db = require('../../config/db');  // Điều này đảm bảo sử dụng kết nối cơ sở dữ liệu đã tạo
+const db = require("../../config/db"); // Điều này đảm bảo sử dụng kết nối cơ sở dữ liệu đã tạo
 
 const Playlist = {
   getAll: (callback) => {
-    db.query('SELECT * FROM playlist', callback);
+    db.query("SELECT * FROM playlist", callback);
   },
 
   getById(id, callback) {
