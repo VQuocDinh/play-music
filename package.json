@@ -11,9 +11,13 @@
   "keywords": [
     "play-music"
   ],
+  
   "author": "voquocdinh",
   "license": "ISC",
   "dependencies": {
+
+    "node-fetch": "^3.3.2"
+    "esm": "^3.2.25",
     "axios": "^1.6.0",
     "child_process": "^1.0.2",
     "csv-parse": "^5.5.2",
@@ -21,7 +25,9 @@
     "express-handlebars": "^7.1.2",
     "mysql": "^2.18.1",
     "swiper": "^11.0.3"
+
   },
+
   "devDependencies": {
     "csv-parser": "^3.0.0",
     "handlebars": "^4.5.0",
