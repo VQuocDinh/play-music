@@ -17,6 +17,7 @@ function route(app) {
     app.use('/signup', signupRouter)
     app.use('/song', signupRouter)
     app.use('/', homeRouter)
+    
 }
 
 module.exports = route;

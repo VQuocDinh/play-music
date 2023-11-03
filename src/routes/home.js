@@ -3,6 +3,9 @@ const db = require('../config/db'); // Điều này đảm bảo sử dụng k�
 const express = require('express')
 const router = express.Router()
 const homeController = require('../app/controllers/HomeController')
+
+router.get('/play/:songName', homeController.index)
+
 router.get('/search', homeController.search)
 router.get('/', homeController.index)
 

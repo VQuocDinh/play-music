@@ -28,12 +28,31 @@ app.use(morgan('combined'))
 app.engine('hbs', exphbs.engine({
   extname: '.hbs'
 }));
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'))
 
+
 // Route init
+app.use(express.static('public'));
+
+
+
+// Định nghĩa route để phát nhạc
+app.get('/play/:songName', (req, res) => {
+  const songName = req.params.songName;
+  // Trả về file nhạc theo tên
+  res.sendFile(__dirname + `/public/music/${songName}.mp3`);
+
+});
+
+
+
 route(app);
+
+
+
 
 app.listen(port, () => {
   console.log(`App listening on port http://localhost:${port}`)
-})
+});
