@@ -30,7 +30,7 @@ router.post(
   ContentManagementController.updateSong
 );
 router.post(
-  "admin/songmanagement/:SongID",
+  "/admin/songmanagement/:SongID",
   ContentManagementController.deleteSong
 );
 

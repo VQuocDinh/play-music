@@ -78,7 +78,6 @@ const UserMangementController = {
   },
   deleteUser(req, res, next) {
     const userId = req.params.UserID;
-
     const query = "UPDATE users set status = 1 WHERE UserID = ?";
     db.query(query, [userId], (err, results) => {
       if (err) {

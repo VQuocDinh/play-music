@@ -276,13 +276,7 @@ function modal3Show() {
 function modal3close() {
   modal3Ele.style.display = "none";
 }
-function modal7how() {
-  modal7Ele.style.display = "block";
-}
 
-function modal7close() {
-  modal7Ele.style.display = "none";
-}
 function modal4Close() {
   modal4Ele.style.display = "none";
 }
@@ -309,31 +303,35 @@ function modal6close() {
 document.addEventListener("DOMContentLoaded", () => {
   let UserID;
   const deleteForm = document.forms["delete-user-form"];
-  const btnDelete = document.getElementById("btn-delete-user");
+  const btnDeleteUser = document.getElementById("btn-delete-user");
 
   $("#delete-user-modal").on("show.bs.modal", function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     UserID = button.data("id");
   });
-
-  btnDelete.onclick = function (e) {
+  btnDeleteUser.onclick = function (e) {
     deleteForm.action = "admin/" + UserID;
     deleteForm.submit();
   };
 });
 
+function modal7how() {
+  modal7Ele.style.display = "block";
+}
+function modal7close() {
+  modal7Ele.style.display = "none";
+}
 document.addEventListener("DOMContentLoaded", () => {
   let SongID;
-  const deleteForm = document.forms["delete-song-form"];
-  const btnDelete = document.getElementById("btn-delete-song");
-  console.log(deleteForm);
+  const deleteSongForm = document.forms["delete-song-form"];
+  const btnDeleteSong = document.getElementById("btn-delete-song");
+
   $("#delete-song-modal").on("show.bs.modal", function (event) {
-    var button = $(event.relatedTarget); // Button that triggered the modal
+    const button = $(event.relatedTarget);
     SongID = button.data("id");
   });
-
-  btnDelete.onclick = function (e) {
-    deleteForm.action = "songmanagement/" + SongID;
-    deleteForm.submit();
+  btnDeleteSong.onclick = function (e) {
+    deleteSongForm.action = "/login/admin/songmanagement/" + SongID;
+    deleteSongForm.submit();
   };
 });

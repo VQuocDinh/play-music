@@ -78,7 +78,6 @@ const ContentMangementController = {
 
   deleteSong(req, res, next) {
     const SongID = req.params.SongID;
-    console.log(SongID);
     const query = "UPDATE songs set status_song = 1 WHERE SongID = ?";
     db.query(query, [SongID], (err, results) => {
       if (err) {
