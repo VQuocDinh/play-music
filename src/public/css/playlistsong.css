@@ -355,7 +355,7 @@ button {
         .main-page .album-detail-container .media-list .media-item .media-left .detail h3 {
           color: #ffdecd;
           font-size: 1em; }
-        .main-page .album-detail-container .media-list .media-item .media-left .detail a {
+        .main-page .album-detail-container .media-list .media-item .media-left .detail span {
           color: #ffdecd;
           font-size: 0.7em; }
         .main-page .album-detail-container .media-list .media-item .media-right .time {
@@ -377,3 +377,15 @@ button {
           border-radius: 20px;
           background-color: #f17a37;
           box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, 0.53) inset; }
+
+.btnss button i {
+  color: #ffdecd;
+  font-size: 1em;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  margin-right: 5px;
+  transition: 0.3s;
+  cursor: pointer; }
+  .btnss button i:hover {
+    background-color: #f17a37; }

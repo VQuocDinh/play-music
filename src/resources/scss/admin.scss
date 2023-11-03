@@ -29,7 +29,7 @@ body::-webkit-scrollbar-track {
   height: 100vh;
   box-sizing: border-box;
   background-color: $bg-slider;
-  .Menu {
+  #Menu {
     padding: 25px 0 0 25px;
     height: 35%;
     width: 100%;
@@ -38,10 +38,9 @@ body::-webkit-scrollbar-track {
       color: $text-color;
       margin-bottom: 10px;
     }
-    .menu-list {
+    .menu {
       width: 100%;
       a {
-        display: block;
         color: $text-color-bold;
         font-size: 0.875em;
         font-style: normal;
@@ -49,14 +48,16 @@ body::-webkit-scrollbar-track {
         margin-top: 30px;
         transition: 0.3s;
         border: 1px solid $text-color;
-        width: 90%;
         padding: 10px 15px;
         border-radius: 20px;
+        cursor: pointer;
+        width: 90%;
         &:hover {
           transform: translateX(10px);
           border: 1px solid $text-color-bold;
           background-color: $text-color-bold;
           color: $bg-color;
+          text-decoration: none;
         }
         &.active {
           transform: translateX(10px);
@@ -64,6 +65,7 @@ body::-webkit-scrollbar-track {
           background-color: $text-color-bold;
           color: $bg-color;
         }
+
         i {
           margin-right: 10px;
         }
@@ -71,6 +73,7 @@ body::-webkit-scrollbar-track {
     }
   }
 }
+
 header {
   width: 85%;
   padding: 20px;
@@ -102,32 +105,11 @@ header {
   background-color: $bg-color;
   padding: 75px 20px 0 20px;
   margin-left: auto;
+  height: unset;
   h2 {
     font-size: 2em;
     color: $text-color-bold;
     margin-bottom: 20px;
-  }
-  form {
-    width: 30%;
-    .input-group {
-      background-color: $bg-slider;
-      padding: 10px;
-      border-radius: 20px;
-      margin-left: 10px;
-      label {
-        font-size: 1em;
-        color: #ffffff;
-      }
-      input {
-        width: 95%;
-        color: $text-color;
-        opacity: 0.8;
-        &::placeholder {
-          color: $text-color;
-          font-size: 0.875em;
-        }
-      }
-    }
   }
   .header {
     margin-bottom: 20px;
@@ -146,6 +128,31 @@ header {
       color: $text-color;
       font-size: 1em;
       font-weight: 600;
+      margin-bottom: 0;
+    }
+    form {
+      width: 30%;
+      .input-group {
+        background-color: $bg-slider;
+        padding: 10px;
+        border-radius: 20px;
+        margin-left: 10px;
+        label {
+          font-size: 1em;
+          color: #ffffff;
+          margin-bottom: 0;
+          margin-right: 5px;
+        }
+        input {
+          width: 95%;
+          color: $text-color;
+          opacity: 0.8;
+          &::placeholder {
+            color: $text-color;
+            font-size: 0.875em;
+          }
+        }
+      }
     }
     .line {
       width: 100%;
@@ -156,42 +163,33 @@ header {
   }
   .user-management {
     display: block;
-    height: 100vh;
     .user-list {
       color: $text-color;
       max-height: 700px;
       overflow-y: scroll;
       .user {
-        width: 80%;
-        padding: 20px;
-        margin-bottom: 10px;
-        border-radius: 0;
-        border: 1px solid $bg-color;
-        transition: 0.3s;
-        .name {
-          img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            border-radius: 50%;
-          }
+        img {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+          border-radius: 50%;
         }
-        .btn-RUD {
-          button {
-            cursor: pointer;
-            i {
-              padding: 10px;
-              color: $text-color;
-              margin-right: 10px;
-              font-size: 0.875em;
-              transition: 0.3s;
-              &:hover {
-                background-color: $bg-icon-color;
-                border-radius: 50%;
-              }
+
+        button {
+          cursor: pointer;
+          i {
+            padding: 10px;
+            color: $text-color;
+            margin-right: 10px;
+            font-size: 0.875em;
+            transition: 0.3s;
+            &:hover {
+              background-color: $bg-icon-color;
+              border-radius: 50%;
             }
           }
         }
+
         &:hover {
           border-radius: 20px;
           border: 1px solid $text-color;
@@ -211,7 +209,6 @@ header {
     }
   }
   .content-management {
-    display: none;
     height: 100%;
     h4 {
       font-size: 1.5em;
@@ -248,26 +245,17 @@ header {
           font-size: 1em;
           color: $text-color;
         }
-        .btn-RUD {
-          .time {
-            display: block;
-            font-size: 1em;
-            font-weight: 400;
+        button {
+          cursor: pointer;
+          i {
+            padding: 10px;
             color: $text-color;
-            margin-right: 15px;
-          }
-          button {
-            cursor: pointer;
-            i {
-              padding: 10px;
-              color: $text-color;
-              margin-right: 10px;
-              font-size: 0.875em;
-              transition: 0.3s;
-              &:hover {
-                background-color: $bg-icon-color;
-                border-radius: 50%;
-              }
+            margin-right: 10px;
+            font-size: 0.875em;
+            transition: 0.3s;
+            &:hover {
+              background-color: $bg-icon-color;
+              border-radius: 50%;
             }
           }
         }
@@ -296,10 +284,13 @@ header {
         transition: 0.3s;
         margin-bottom: 10px;
         margin-right: 10px;
-        .song {
+        cursor: pointer;
+        .playlist-img {
           position: relative;
           img {
-            width: 120px;
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
           }
           &::after {
             content: "\f04b";
@@ -315,8 +306,8 @@ header {
             font-size: 40px;
             background-color: rgba(224, 145, 69, 0.5);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -352,9 +343,10 @@ header {
           color: $text-color;
           margin: 6px 0;
         }
-        a {
+        span {
           color: $text-color;
           font-size: 0.7em;
+          max-width: 200px;
         }
         &:hover {
           background: #f17a37;
@@ -375,6 +367,9 @@ header {
     background-color: $text-color-bold;
     color: $bg-color;
     border-radius: 20px;
+  }
+  &:focus {
+    outline: none;
   }
 }
 .modal {
@@ -401,6 +396,10 @@ header {
   background-color: $bg-color;
   max-width: 900px;
   flex-direction: column;
+  #avatar {
+    display: none;
+  }
+
   h3 {
     color: $text-color-bold;
     font-size: 1.5em;
@@ -440,38 +439,72 @@ header {
       border: 1px solid $text-color-bold;
     }
   }
-  input {
-    display: none;
-  }
-  form {
-    width: 100%;
-    .input-group {
-      width: 48%;
-      margin-bottom: 20px;
-      label {
+
+  .input-group {
+    width: 48%;
+    margin-bottom: 20px;
+    label {
+      font-weight: 400;
+      font-size: 1em;
+      line-height: 22px;
+      color: $text-color;
+    }
+    input,
+    textarea {
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      border: 1px solid $text-color;
+      border-radius: 5px;
+      padding: 9px 12px;
+      color: $text-color;
+      &::placeholder {
         font-weight: 400;
-        font-size: 1em;
-        line-height: 22px;
+        font-size: 14.4px;
+        line-height: 20px;
         color: $text-color;
-      }
-      input {
-        margin-top: 10px;
-        display: block;
-        width: 100%;
-        border: 1px solid $text-color;
-        border-radius: 5px;
-        padding: 9px 12px;
-        color: $text-color;
-        l &::placeholder {
-          font-weight: 400;
-          font-size: 14.4px;
-          line-height: 20px;
-          color: $text-color;
-        }
       }
     }
   }
 }
-#avatar {
+.close-modal {
+  padding: 5px 10px;
+  border: 1px solid $text-color;
+  color: $text-color-bold;
+  border-radius: 10px;
+  cursor: pointer;
+  top: 15%;
+  right: 28%;
+
+  transition: 0.3s;
+  margin-bottom: 20px;
+  &:hover {
+    background-color: $text-color-bold;
+    color: #ffffff;
+    border: 1px solid $text-color-bold;
+  }
+}
+
+.modal-8 {
+  display: block !important;
+}
+.modal-7-edit {
+  display: block !important;
+}
+#error-message {
+  font-size: 1em;
+  color: $text-color;
+}
+
+textarea {
+  background-color: $bg-color;
+  height: 100px;
+}
+.close-add-playlist {
+  top: 25%;
+  right: 28%;
+}
+
+.player-control {
   display: none;
 }
