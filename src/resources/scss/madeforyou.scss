@@ -507,3 +507,35 @@ header {
     }
   }
 }
+// 
+.play-pause {
+  height: 54px;
+  width: 54px;
+  box-shadow: 0 0 5px var(--green);
+  background: var(--slate-800);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.play-pause::before {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: inherit;
+  background: var(--green);
+}
+.play-pause i {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-radius: inherit;
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
