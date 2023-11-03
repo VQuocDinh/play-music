@@ -3,7 +3,9 @@ const db = require('../config/db'); // Điều này đảm bảo sử dụng k�
 const express = require('express')
 const router = express.Router()
 const homeController = require('../app/controllers/HomeController')
+
+router.post('/receive_data', homeController.receiveData)
 router.get('/search', homeController.search)
-router.get('/', homeController.index)
+router.get('/', homeController.getHomePage)
 
 module.exports = router;

@@ -9,6 +9,35 @@
             </button>
         </div>
         <canvas id="myChart" style="width: 90%; height:300px;"></canvas>
+        <script>
+            // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
+            const token = 'BQC32lhjQGYcwFxNK64vstrvYuJcHdVyGPQbqKxcZMtp4hsTdHCjvWauQjrsOgPJp7aUxqCeObVpns09mVoWaOxHjsI14X71VhPbTGkszhtkcy30k565d-FOcDlZNhHZW4wd7bzbPBhZMqZJR3CriVmOB5Xr3A8z4bwWxL06s_Czk3GGvqFjixV4iD3r0VWtoCHe5Uib8TETBG_fJbzve5Pz--4dHf_GZguboR2CsQ7ykgOZWTrHwk_autrb_ExYeLN7DtsQkAc41_rog9bmz12B';
+            async function fetchWebApi(endpoint, method, body) {
+                const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    method,
+                    body: JSON.stringify(body)
+                });
+                return await res.json();
+            }
+
+            async function getTopTracks() {
+                // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+                return (await fetchWebApi(
+                    'v1/me/top/tracks?time_range=short_term&limit=5', 'GET'
+                )).items;
+            }
+
+            const topTracks = await getTopTracks();
+            console.log(
+                topTracks?.map(
+                    ({ name, artists }) =>
+                        `${name} by ${artists.map(artist => artist.name).join(', ')}`
+                )
+            );
+        </script>
         <div class="media-list">
 
             {{#each songs}}
@@ -35,4 +64,4 @@
 </div>
 
 <script src="/js/topchart.js">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
