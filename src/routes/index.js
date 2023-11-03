@@ -6,6 +6,7 @@ const favouritesongRouter = require('./favouritesong')
 const homeRouter = require('./home')
 const loginRouter = require('./login')
 const signupRouter = require('./singup')
+const songRouter = require('./song')
 
 function route(app) {
     app.use('/madeforyou', madeforyouRouter)
@@ -15,7 +16,7 @@ function route(app) {
     app.use('/favouritesong', favouritesongRouter)
     app.use('/login', loginRouter)
     app.use('/signup', signupRouter)
-    app.use('/song', signupRouter)
+    app.use('/song', songRouter)
     app.use('/', homeRouter)
 }
 

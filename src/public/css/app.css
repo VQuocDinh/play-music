@@ -183,7 +183,8 @@ header {
   background-color: #17181d;
   padding-bottom: 75px;
   min-height: 100vh;
-  padding-top: 75px; }
+  padding-top: 75px;
+  margin-top: 500px; }
   .main-page .banner {
     width: 100%;
     margin: auto; }
@@ -256,7 +257,8 @@ header {
     .main-page .section-1 .made-for-you .title a {
       color: #ffdecd;
       font-size: 1em;
-      position: relative; }
+      position: relative;
+      margin-left: auto; }
       .main-page .section-1 .made-for-you .title a::after {
         content: "";
         width: 100%;
@@ -274,6 +276,9 @@ header {
         visibility: visible;
         opacity: 1;
         transform: scaleX(100%); }
+    .main-page .section-1 .made-for-you .title i {
+      color: #ffdecd;
+      font-size: 1.5em; }
     .main-page .section-1 .made-for-you .list-music .music {
       margin-top: 30px;
       width: 19%;
@@ -281,13 +286,16 @@ header {
       padding: 10px;
       border-radius: 10px;
       transition: 0.3s;
+      max-width: 20%;
+      height: 120px;
       cursor: pointer; }
       .main-page .section-1 .made-for-you .list-music .music a img {
         width: 50px;
         margin-right: 24px; }
       .main-page .section-1 .made-for-you .list-music .music .detail h3 {
         color: #fcaf67;
-        font-size: 1em; }
+        font-size: 1em;
+        max-width: 120px; }
       .main-page .section-1 .made-for-you .list-music .music .detail a {
         color: #ffdecd;
         font-size: 0.7em; }
@@ -741,3 +749,9 @@ body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: #17181d; }
+
+#main-header {
+  transition: 0.5s; }
+
+#home-mainpage {
+  transition: 0.5s; }
