@@ -1,0 +1,90 @@
+@charset "UTF-8";
+.flex {
+  display: flex;
+  flex-wrap: wrap; }
+
+.j-between {
+  justify-content: space-between; }
+
+.j-center {
+  justify-content: center; }
+
+.j-start {
+  justify-content: flex-start; }
+
+.j-end {
+  justify-content: flex-end; }
+
+.a-start {
+  align-items: flex-start; }
+
+.a-end {
+  align-items: flex-end; }
+
+.a-center {
+  align-items: center; }
+
+.p-relative {
+  position: relative; }
+
+.p-absolute {
+  position: absolute; }
+
+.p-fixed {
+  position: fixed; }
+
+.t-0 {
+  top: 0; }
+
+.r-0 {
+  right: 0; }
+
+.l-0 {
+  left: 0; }
+
+.b-0 {
+  bottom: 0; }
+
+.z-1 {
+  z-index: 1; }
+
+/*  Thanh time nhạc */
+.progress-area {
+  height: 6px;
+  width: 100%;
+  background: var(--slate-100);
+  border-radius: 50px;
+  cursor: pointer;
+  background: #615b5b; }
+
+.progress-area .progress-bar {
+  position: relative;
+  height: inherit;
+  border-radius: inherit;
+  width: 0%;
+  background: #b29813; }
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background: var(--greenshadow);
+  border-radius: inherit;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease; }
+
+.progress-area:hover .progress-bar::before {
+  opacity: 1; }
+
+.progress-area:hover .progress-bar::before {
+  opacity: 1; }
+
+.timer-duration {
+  margin-top: 2px; }
+
+.timer-duration span {
+  font-size: 13px; }

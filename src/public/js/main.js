@@ -73,3 +73,18 @@ console.log(dropDownMoreEle)
 function reloadPage() {
   window.location.href = "/"
 }
+const mainSectionEle = document.getElementById("main-section")
+const mainHeader = document.getElementById("inframe")
+
+document.addEventListener("scroll", () => {
+  const positionY = window.scrollY;
+  if (positionY > 300) {
+    mainHeader.style.opacity = "0";
+    mainHeader.style.visibility = "hidden";
+
+  }
+  else {
+    mainHeader.style.opacity = "1";
+    mainHeader.style.visibility = "visible";
+  }
+});

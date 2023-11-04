@@ -9,6 +9,7 @@ const ContentMangementController = {
         res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
       } else {
         res.render("songmanagement", { songmanagememt });
+      
       }
     });
   },

@@ -136,6 +136,13 @@ app.get('/search', (req, res) => {
 });
 
 
+// Định nghĩa route để phát nhạc
+app.get('/play/:songName', (req, res) => {
+  const songName = req.params.songName;
+  // Trả về file nhạc theo tên
+  res.sendFile(__dirname + `/public/music/${songName}.mp3`);
+
+});
 
 
 //Kiểm tra connect to db

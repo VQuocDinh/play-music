@@ -183,8 +183,7 @@ header {
   background-color: #17181d;
   padding-bottom: 75px;
   min-height: 100vh;
-  padding-top: 75px;
-  margin-top: 500px; }
+  padding-top: 75px; }
   .main-page .banner {
     width: 100%;
     margin: auto; }
@@ -750,8 +749,9 @@ body::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #17181d; }
 
-#main-header {
-  transition: 0.5s; }
-
 #home-mainpage {
+  padding-top: 25px;
+  min-height: 2000px; }
+
+#inframe {
   transition: 0.5s; }
