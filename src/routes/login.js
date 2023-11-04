@@ -89,9 +89,7 @@ router.get('/admin')
 
 router.get("/", (req, res) => {
   // Render trang đăng nhập mà không sử dụng layout và các partials
-  res.render("login", {
-    layout: false, // Không sử dụng layout
-  });
+  res.render("login", {layout: false });
 });
 
 module.exports = router;

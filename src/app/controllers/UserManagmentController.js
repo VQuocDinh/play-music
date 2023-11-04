@@ -2,11 +2,11 @@ const usermangement = require("../models/usermanagement");
 const db = require("../../config/db");
 const UserMangementController = {
   getAllUsers: (req, res) => {
-    usermangement.getAllUser((err, usermangement) => {
+    usermangement.getAllUser((err, userManagementData) => {
       if (err) {
         res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
       } else {
-        res.render("admin", { usermangement });
+        res.render("admin", {usermangement: userManagementData, layout: false });
       }
     });
   },

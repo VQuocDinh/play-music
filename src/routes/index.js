@@ -17,7 +17,7 @@ function route(app) {
     app.use('/artist', artistRouter)
     app.use('/topchart', topchartRouter)
     app.use('/favouritesong', favouritesongRouter)
-    app.use('/login', loginRouter)
+    app.use('/login', loginRouter   )
     app.use('/signup', signupRouter)
     app.use('/admin', addmin)
     app.use('/song', songRouter)

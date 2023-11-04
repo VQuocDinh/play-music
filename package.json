@@ -23,9 +23,9 @@
     "jsdom": "^22.1.0",
     "jsonwebtoken": "^9.0.2",
     "pug": "^3.0.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
 
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
     "esm": "^3.2.25",
     "axios": "^1.6.0",
     "child_process": "^1.0.2",
