@@ -8,7 +8,7 @@ router.get('/play/:songName', homeController.index)
 
 router.post('/receive_data', homeController.receiveData)
 router.get('/search', homeController.search)
-router.post('/', homeController.index)
+// router.post('/', homeController.index)
 router.get('/', homeController.getHomePage)
 
 module.exports = router;

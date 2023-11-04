@@ -2,7 +2,11 @@
 
 <div id="home-mainpage" class="main-page">
     <!-- banner của website  -->
-
+    <div id="inframe">
+        
+    <iframe id="iframe" src="http://localhost:8501"
+        style="width:100%; height:500px; border:none; overflow:hidden;"></iframe>
+    </div>
     {{!-- <div class="banner p-relative a-center j-center">
         <div class="list-banner flex a-center j-center">
             <div class="item">
@@ -26,15 +30,15 @@
     </div>
 
 
-    <section class="section-1">
+    <section id="main-section" class="section-1">
         <!-- phần gợi ý nghe nhạc cho người dùng -->
         <div class="made-for-you">
             <div class="title flex  a-center   ">
                 <h2>MADE FOR YOU</h2>
                 <button onclick="reloadPage()" type="button"><i class="fa-solid fa-rotate-right"></i></button>
-              
+
                 <a id="made-for-you-page" href="/madeforyou">See All</a>
-               
+
             </div>
 
 
@@ -103,7 +107,7 @@
                     <div class="list-song ">
                         <a class="song" href="/playlist/{{PlaylistID}}"><img src="{{Image}}" alt=""></a>
                         <h4>{{Name}}</h4>
-                        <a href="">{{Describe}}</a>
+                        <a href="">{{Description}}</a>
                     </div>
                     {{/each}}
 
