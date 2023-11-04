@@ -1,71 +1,76 @@
-const Home = require('../models/Home');
-const Playlist = require('../models/Playlist');
-const Artist = require('../models/Artist');
-const Topchart = require('../models/Songs');
+const Home = require("../models/Home");
+const Playlist = require("../models/Playlist");
+const Artist = require("../models/Artist");
+const Topchart = require("../models/Songs");
 
 const songData = [];
 
-
 const HomeController = {
-    index(req, res) {
-        res.render('home')
-    getHomePage: (req, res) => {
-        Playlist.getAll((err, playlists) => {
-            if (err) {
-                res.status(500).json({ error: 'Lỗi khi lấy danh sách phát' });
-                return;
-            }
+  index(req, res) {
+    res.render("home");
+  },
 
-            Artist.getAll((err, artists) => {
-                if (err) {
-                    res.status(500).json({ error: 'Lỗi khi lấy thông tin nghệ sĩ' });
-                    return;
-                }
+  getHomePage(req, res) {
+    Playlist.getAll((errPlaylist, playlists) => {
+      if (errPlaylist) {
+        res.status(500).json({ error: "Lỗi khi lấy danh sách phát" });
+        return;
+      }
 
-                Topchart.getBySort((err, topchart) => {
-                    if (err) {
-                        res.status(500).json({ error: 'Lỗi khi lấy thông tin nghệ sĩ' });
-                        return;
-                    }
-
-                    res.render('home', { playlists, artists, topchart, songData });
-                });
-
-            });
-        });
-    },
-
-    search(req, res) {
-        Home.search(req.query.query, (err, searchresults) => {
-            if (err) {
-                res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });
-            } else if (!(req.query.query)) {
-                res.render('home');
-            } else {
-                res.render('searchresult', { searchresults });
-            }
-        });
-    },
-
-    receiveData(req, res) {
-        const { recommended_music_names, recommended_music_posters } = req.body;
-
-        console.log(recommended_music_names);
-        console.log(recommended_music_posters);
-
-        // Xóa dữ liệu cũ
-        songData.length = 0;
-
-        // Thêm dữ liệu mới vào mảng
-        for (let i = 0; i < recommended_music_names.length; i++) {
-            songData.push({
-                song_name: recommended_music_names[i],
-                img_path: recommended_music_posters[i]
-            });
+      Artist.getAll((errArtist, artists) => {
+        if (errArtist) {
+          res.status(500).json({ error: "Lỗi khi lấy thông tin nghệ sĩ" });
+          return;
         }
 
-        res.send('Data received and stored temporarily');
+        Topchart.getBySort((errTopchart, topchart) => {
+          if (errTopchart) {
+            res
+              .status(500)
+              .json({ error: "Lỗi khi lấy thông tin bảng xếp hạng" });
+            return;
+          }
+
+          res.render("home", { playlists, artists, topchart, songData });
+        });
+      });
+    });
+  },
+
+  search(req, res) {
+    const searchQuery = req.query.query;
+
+    if (!searchQuery) {
+      return res.render("home");
     }
-}
+
+    Home.search(searchQuery, (err, searchResults) => {
+      if (err) {
+        return res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+      }
+
+      if (searchResults.length === 0) {
+        return res.render("noresults");
+      }
+
+      res.render("searchresult", { searchresults: searchResults });
+    });
+  },
+
+  receiveData(req, res) {
+    const { recommended_music_names, recommended_music_posters } = req.body;
+
+    songData.length = 0;
+
+    for (let i = 0; i < recommended_music_names.length; i++) {
+      songData.push({
+        song_name: recommended_music_names[i],
+        img_path: recommended_music_posters[i],
+      });
+    }
+
+    res.send("Dữ liệu đã được nhận và lưu tạm thời");
+  },
+};
 
 module.exports = HomeController;

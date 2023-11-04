@@ -1,33 +1,30 @@
+// const express = require("express");
+// const morgan = require("morgan");
+// const route = require("./routes");
+// const handlebars = require("express-handlebars");
+// const path = require("path");
+// const db = require("./config/db");
+
+// const app = express();
+// const port = 3000;
+// app.use(express.static("public"));
 
 const express = require("express");
 const morgan = require("morgan");
 const route = require("./routes");
-const handlebars = require("express-handlebars");
+const exphbs = require("express-handlebars");
 const path = require("path");
 const db = require("./config/db");
-
-const app = express();
-const port = 3000;
-// app.use(express.static("public"));
-
-const express = require('express')
-const morgan = require('morgan')
-const route = require('./routes')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const db = require('./config/db')
 // const bodyParser = require('body-parser')
-const fs = require('fs');
-const csv = require('csv-parser');
+const fs = require("fs");
+const csv = require("csv-parser");
 // const { Console } = require('console')
 // const axios = require('axios');
-const app = express()
-const port = 3000
-
+const app = express();
+const port = 3000;
 
 // const http = require('http');
 // app.use(express.urlencoded({ extended: true }));
-
 
 // app.use(express.json());
 
@@ -45,7 +42,6 @@ const port = 3000
 //       res.status(500).json({ error: 'Đã xảy ra lỗi khi gửi yêu cầu đến hệ thống đề xuất' });
 //     });
 // });
-
 
 // Endpoint để nhận yêu cầu tìm kiếm bài hát
 // app.post('/search-song', (req, res) => {
@@ -160,10 +156,8 @@ const port = 3000
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // app.post('/search', (req, res) => {
 //   const searchTerm = req.body.searchTerm; // Nhận dữ liệu từ frontend
-
 
 //   // Gửi dữ liệu tới ứng dụng Python
 //   const dataToSend = { searchTerm }; // Chuẩn bị dữ liệu cần gửi
@@ -192,19 +186,18 @@ const port = 3000
 //   // console.log(searchTerm)
 // });
 
-
 // Get music list from csv file
 const songs = [];
-fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+fs.createReadStream(
+  "D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv"
+)
   .pipe(csv())
-  .on('data', (row) => {
+  .on("data", (row) => {
     songs.push(row);
   })
-  .on('end', () => {
-    console.log('CSV file successfully processed.');
+  .on("end", () => {
+    console.log("CSV file successfully processed.");
   });
-
-
 
 // app.post('/search', (req, res) => {
 //   const searchTerm = req.body.searchTerm; // Lấy dữ liệu tìm kiếm từ frontend
@@ -226,42 +219,38 @@ fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender
 //     });
 // });
 
-
-
 // Endpoint để xử lý tìm kiếm bài hát
-app.get('/search', (req, res) => {
+app.get("/search", (req, res) => {
   const searchTerm = req.query.query;
 
   if (!searchTerm) {
-    return res.status(400).send('Please provide a search term.');
+    return res.status(400).send("Please provide a search term.");
   }
 
   // Tìm kiếm trong mảng songs
-  const searchResults = songs.filter(song => {
+  const searchResults = songs.filter((song) => {
     return (
       song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
       song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
     );
   });
-  res.render('searchresult', { searchResults })
+  res.render("searchresult", { searchResults });
   //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
 });
-
-
-
 
 //Kiểm tra connect to db
 db.connection;
 
 //Set static file
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")));
 
 // Midleware xử lý dữ liệu từ form sublit lên
-app.use(express.urlencoded({
-    extended: true //npm body parser
-}))
-
+app.use(
+  express.urlencoded({
+    extended: true, //npm body parser
+  })
+);
 
 app.use(express.json());
 
@@ -273,38 +262,28 @@ app.use(morgan("combined"));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
 
-app.engine('hbs', exphbs.engine({
-    extname: '.hbs'
-}));
+app.engine(
+  "hbs",
+  exphbs.engine({
+    extname: ".hbs",
+  })
+);
 
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'))
-
-
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources", "views"));
 
 // Route init
-app.use(express.static('public'));
-
-
+app.use(express.static("public"));
 
 // Định nghĩa route để phát nhạc
-app.get('/play/:songName', (req, res) => {
+app.get("/play/:songName", (req, res) => {
   const songName = req.params.songName;
   // Trả về file nhạc theo tên
   res.sendFile(__dirname + `/public/music/${songName}.mp3`);
-
 });
-
-
 
 route(app);
 
-
-
-
 app.listen(port, () => {
-
-
-  console.log(`App listening on port http://localhost:${port}`)
-
+  console.log(`App listening on port http://localhost:${port}`);
 });
