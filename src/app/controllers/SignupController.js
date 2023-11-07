@@ -1,89 +1,100 @@
+const Home = require("../models/Home");
+const Playlist = require("../models/Playlist");
+const Artist = require("../models/Artist");
+const Topchart = require("../models/Songs");
 
-const User = require('../models/User'); // Import User model
-const bcrypt = require('bcrypt');
+const songData = [];
 
-class SignupController {
-    static signupuser(req, res) {
-        const user = req.body.email;
-        const password = req.body.password;
-        const birth = req.body.birth;
-        const username = req.body.username;
-        const Retype = req.body.Retype;
+const HomeController = {
+  index(req, res) {
+    // const data = {
+    //     username: "user",
+    //     playlists: playlists,
+    //     artists: artists,
+    //     topchart: topchart,
+    // };
 
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+    res.render("home");
+  },
+
+  getHomePage(req, res) {
+    Playlist.getAll((errPlaylist, playlists) => {
+      if (errPlaylist) {
+        res.status(500).json({ error: "Lỗi khi lấy danh sách phát" });
+        return;
+      }
+
+      Artist.getAll((errArtist, artists) => {
+        if (errArtist) {
+          res.status(500).json({ error: "Lỗi khi lấy thông tin nghệ sĩ" });
+          return;
         }
 
-        if (!user || !password || !birth || !username) {
-            const errorMessage = 'Vui lòng nhập đầy đủ thông tin đăng ký!';
-            return res.status(400).render('signup', {
-                layout: false,
-                errorMessage: errorMessage
-            });
-        } else if (!isValidEmail(user)) {
-            const errorMessage = 'Email không hợp lệ!';
-            return res.status(400).render('signup', {
-                layout: false,
-                errorMessage: errorMessage
-            });
-        } else if (password !== Retype) {
-            const errorMessage = 'Mật khẩu nhập lại không chính xác!';
-            return res.status(400).render('signup', {
+        Topchart.getBySort((errTopchart, topchart) => {
+          if (errTopchart) {
+            res
+              .status(500)
+              .json({ error: "Lỗi khi lấy thông tin bảng xếp hạng" });
+            return;
+          }
 
-        if (!user || !password || !birth || !username || password != Retype) {
-            // Hiển thị thông báo lỗi khi không nhập email hoặc password
-            const errorMessage = 'Vui lòng nhập lại thông tin của bạn.';
-            res.render('signup', {
-                layout: false,
-                errorMessage: errorMessage
-            });
-        } else {
-            User.getUserByUsername(user, (error, results) => {
-                if (results === "" || !results) {
-                   
-                    
-                    User.addUser(user, password, birth, username, (err, result) => {
-                        if (err) {
-                            // Handle the error, for example:
-                            return res.status(500).send('Internal Server Error');
-                        } else {
-                            const successMessage = 'Đăng ký thành công';
-                            return res.render('signup', {
-                                layout: false,
-                                Message: successMessage
-                            });
-                        }
-                    });
-                } else {
-                    const errorMessage = 'Email này đã được đăng ký!';
-                    return res.status(400).render('signup', {
-                        layout: false,
-                        errorMessage: errorMessage
-                    });
-            // Tạo một salt
-            const saltRounds = 10; // Số lượt lấy muối (càng cao càng an toàn, nhưng cũng càng chậm)
-            bcrypt.genSalt(saltRounds, (err, salt) => {
-                if (err) {
-                    return console.error(err);
-                }
-                bcrypt.hash(password, salt, (err, encryptedPassword) => {
-                    if (err) {
-                        return console.error(err);
-                    }
+          const data = {
+            username: "user",
 
-                    // 'encryptedPassword' là mật khẩu đã được mã hóa
-                    User.addUser(user, encryptedPassword, birth, username, (err, result) => {
-                        if (err) {
-                            res.render('signup', { message: 'colo:red' });
-                        } else {
-                            res.redirect('/login');
-                        }
-                    });
-                });
-            });
-        }
+            playlists: playlists,
+            artists: artists,
+            topchart: topchart,
+          };
+
+          res.render("home", { data });
+        });
+      });
+    });
+  },
+
+  search(req, res) {
+    const searchQuery = req.query.query;
+
+    if (!searchQuery) {
+      const data = {
+        username: "user",
+        // image: '/img/userlogo.png   ',
+
+        playlists: playlists,
+        artists: artists,
+        topchart: topchart,
+      };
+
+      res.render("home", { data });
     }
-}
 
-module.exports = SignupController;
+    Home.search(searchQuery, (err, searchResults) => {
+      if (err) {
+        return res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+      }
+
+      if (searchResults.length === 0) {
+        return res.render("noresults");
+      }
+
+      res.render("searchresult", { searchresults: searchResults });
+    });
+  },
+
+  receiveData(req, res) {
+    const { recommended_music_names, recommended_music_posters } = req.body;
+
+    songData.length = 0;
+
+    for (let i = 0; i < recommended_music_names.length; i++) {
+      songData.push({
+        song_name: recommended_music_names[i],
+        img_path: recommended_music_posters[i],
+      });
+    }
+
+    res.send("Dữ liệu đã được nhận và lưu tạm thời");
+  },
+};
+
+module.exports = HomeController;
