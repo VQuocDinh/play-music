@@ -1,9 +1,10 @@
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-    host: "localhost", // Thay đổi thông tin kết nối theo cấu hình của bạn
-    user: "root",
-    database: "playmusic",
+  host: "localhost", // Thay đổi thông tin kết nối theo cấu hình của bạn
+  user: "root",
+  database: "play-music",
+
 });
 
 connection.connect((err) => {

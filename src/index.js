@@ -57,6 +57,16 @@ app.get('/track/:id', (req, res) => {
     });
 });
 
+// Get music list from csv file
+const songs = [];
+fs.createReadStream('D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+  .pipe(csv())
+  .on('data', (row) => {
+    songs.push(row);
+  })
+  .on('end', () => {
+    console.log('CSV file successfully processed.');
+  });
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/',
@@ -120,6 +130,12 @@ app.get('/search', (req, res) => {
         //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
 });
 
+app.get('/play/:songName', (req, res) => {
+  const songName = req.params.songName;
+  // Trả về file nhạc theo tên
+  res.sendFile(__dirname + `/public/music/${songName}.mp3`);
+
+});
 
 // Định nghĩa route để phát nhạc
 app.get('/play/:songName', (req, res) => {

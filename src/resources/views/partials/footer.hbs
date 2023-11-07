@@ -6,13 +6,16 @@
       <a href="">Derva</a>
     </div>
   </div>
-  <div class="control-bar flex a-center j-center">
+  {{!-- <div class="control-bar flex a-center j-center"> --}}
     {{!-- <div class="actions">
-      <button class="backward"><i class="fa-solid fa-backward-step"></i></button>
+      <button class="backward"><i
+          class="fa-solid fa-backward-step"
+        ></i></button>
       <button class="pause"><i class="fa-solid fa-circle-pause"></i></button>
-      <button class="forward"><i class="fa-solid fa-forward-step"></i></button>
-    </div> --}}
-    {{!-- <div class="duration-bar flex a-center j-center">
+      <button class="forward"><i class="fa-solid fa-forward-step"></i></button> --}}
+    {{!-- </div>
+    <div class="duration-bar flex a-center j-center">
+
       <span class="tiem left">
         00:00
       </span>
@@ -24,6 +27,31 @@
     </div> --}}
 
     <div class="control-bar flex a-center j-center">
+                
+                <div class="actions">
+                    <button class="backward"> <i  class="material-symbols-rounded">skip_previous</i></button>
+                    <button class="play-pause" ><i class="material-symbols-rounded">play_arrow</i></button>
+                    <button class="forward">  <i  class="material-symbols-rounded">skip_next</i></button>
+                </div>
+                <div class="duration-bar flex a-center j-center">
+                    <span class="tiem left">
+                        
+                    </span>
+                    {{!-- Thanh audio và audio --}}
+                    <div class="progress-area">
+                        
+                        <div class="progress-bar"></div>
+                            <audio id="main-audio" src="" ></audio>
+                     </div> 
+                     {{!--Thời gian thanh nhạc  --}}
+                      <div class="timer-duration">
+                            <span class="current">0:00</span>
+                            <span class="duration">--:--</span>
+                      </div>
+                    
+                    </span>
+                  </div>
+                </div>
 
       <div class="actions">
         <button class="backward"> <i class="material-symbols-rounded">skip_previous</i></button>
@@ -32,6 +60,8 @@
       </div>
       <div class="duration-bar flex a-center j-center">
         <span class="tiem left">
+
+
 
         </span>
         {{!-- Thanh audio và audio --}}
@@ -65,9 +95,9 @@
 
       </div> --}}
     </div>
-  </div>
-  <script>
+</div>
 
-  </script>
+    
+   <script src="/js/madeforyou.js"></script>
 
-  <script src="/js/madeforyou.js"></script>
+
