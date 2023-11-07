@@ -1,3 +1,12 @@
+const madeforyouRouter = require("./madeforyou");
+const playlistRouter = require("./playlist");
+const artistRouter = require("./artist");
+const topchartRouter = require("./topchart");
+const favouritesongRouter = require("./favouritesong");
+const homeRouter = require("./home");
+const loginRouter = require("./login");
+const signupRouter = require("./singup");
+
 
 const madeforyouRouter = require('./madeforyou')
 const playlistRouter = require('./playlist')

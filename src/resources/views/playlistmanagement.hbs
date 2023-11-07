@@ -62,11 +62,16 @@
                 class="fa-solid fa-arrow-up-z-a"
               ></i></button>
             <h3>Play list</h3>
-            <form action="" class="search search-playlist">
+            <form
+              method="post"
+              action="/login/admin/playlistmanagement/searchPlaylist"
+              class="search search-playlist"
+            >
               <div class="input-group">
                 <label for="search-playlist">
                   <i class="fa-solid fa-magnifying-glass"></i></label>
                 <input
+                  name="Name"
                   id="search-playlist"
                   type="text"
                   placeholder="Search for play list "

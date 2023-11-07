@@ -62,12 +62,17 @@
                 class="fa-solid fa-arrow-up-z-a"
               ></i></button>
             <h3>Song list</h3>
-            <form action="" class="search">
-              <div class="input-group">
-                <label for="search-user">
+            <form
+              method="post"
+              action="/login/admin/songmanagement/searchSong"
+              class="search"
+            >
+              <div class="input-group flex a-center">
+                <label for="search-song">
                   <i class="fa-solid fa-magnifying-glass"></i></label>
                 <input
-                  id="search-user"
+                  name="Name"
+                  id="search-song"
                   type="text"
                   placeholder="Search for Song "
                 />
@@ -89,7 +94,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each songmanagememt}}
+                {{#each songmanagement}}
                   <tr class="music">
                     <th><img src="{{Image}}" alt="" /></th>
                     <td>{{Name}}</td>
@@ -208,13 +213,33 @@
           <label for="Time">Time</label>
           <input name="Time" id="Time" type="text" placeholder="Time" />
         </div>
+        <div class="input-group">
+          <label for="artist-select">Artist</label>
+          <select name="ArtistID" id="artist-select">
+
+            {{#each artist}}
+              <option value="{{ArtistID}}">{{Name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="album-select">Album</label>
+          <select name="AlbumID" id="album-select">
+            <option value="">--Choose Album--</option>
+            {{#each album}}
+              <option value="{{AlbumID}}">{{Name}}</option>
+            {{/each}}
+          </select>
+        </div>
+
         <button class="btn-confirm">
           Confirm
         </button>
       </form>
-      <button onclick="modal7close()" class="close-modal p-absolute"><i
-          class="fa-solid fa-xmark"
-        ></i></button>
+      <button
+        onclick="modal7close()"
+        class="close-modal close-add-song p-absolute"
+      ><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
 

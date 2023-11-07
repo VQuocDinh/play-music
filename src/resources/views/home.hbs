@@ -1,6 +1,7 @@
 <!-- phần nội dung chính của website -->
 
 <div id="home-mainpage" class="main-page">
+
     <!-- banner của website  -->
     <div id="inframe">
 
@@ -22,58 +23,57 @@
                 <img src="/img/Rectangle 96.png" alt="slider image 2">
             </div>
         </div>
-    </div> --}}
+    </div> }}
 
+  <div id="musicData">
+    <!-- Dữ liệu được hiển thị sẽ được thêm vào div này -->
+  </div>
 
-    <div id="musicData">
-        <!-- Dữ liệu được hiển thị sẽ được thêm vào div này -->
+  <section id="main-section" class="section-1">
+    <!-- phần gợi ý nghe nhạc cho người dùng -->
+    <div class="made-for-you">
+      <div class="title flex a-center">
+        <h2>MADE FOR YOU</h2>
+        <button onclick="reloadPage()" type="button"><i
+            class="fa-solid fa-rotate-right"
+          ></i></button>
+
+        <a id="made-for-you-page" href="/madeforyou">See All</a>
+
+      </div>
+
+      <div class="list-music flex a-center j-between">
+
+        {{#each songData}}
+          <div class="music flex a-center">
+            <a href=""><img src="{{img_path}}" alt="" /></a>
+            <div class="detail">
+              <h3>{{song_name}}</h3>
+            </div>
+            <button class="more-icon">
+              <i class="fa-solid fa-ellipsis"></i>
+              <ul class="drop-down-more">
+                <li><a href="#">Add playlist</a></li>
+                <li><a href="#">Add favourite song list</a></li>
+                <li><a href="#">Share</a></li>
+              </ul>
+            </button>
+          </div>
+        {{/each}}
+
+      </div>
     </div>
-
-
-    <section id="main-section" class="section-1">
-        <!-- phần gợi ý nghe nhạc cho người dùng -->
-        <div class="made-for-you">
-            <div class="title flex  a-center   ">
-                <h2>MADE FOR YOU</h2>
-                <button onclick="reloadPage()" type="button"><i class="fa-solid fa-rotate-right"></i></button>
-
-                <a id="made-for-you-page" href="/madeforyou">See All</a>
-
-            </div>
-
-
-            <div class="list-music flex a-center j-between ">
-
-                {{#each songData}}
-                <div class="music flex a-center ">
-                    <a href=""><img src="{{img_path}}" alt=""></a>
-                    <div class="detail">
-                        <h3>{{song_name}}</h3>
-                    </div>
-                    <button class="more-icon">
-                        <i class="fa-solid fa-ellipsis"></i>
-                        <ul class="drop-down-more">
-                            <li><a href="#">Add playlist</a></li>
-                            <li><a href="#">Add favourite song list</a></li>
-                            <li><a href="#">Share</a></li>
-                        </ul>
-                    </button>
-                </div>
-                {{/each}}
-
-            </div>
+  </section>
+  <!-- phần thứ hai của web nghe nhạc  -->
+  <section class="section-2 flex j-between">
+    <div class="section-left">
+      <!-- xếp hạng các bài nhạc được nghe nhiều nhất  -->
+      <div class="top-charts">
+        <div class="title flex j-between a-center">
+          <h2>TOP CHARTS</h2>
+          <a id="top-chart-page" href="/topchart">See All</a>
         </div>
-    </section>
-    <!-- phần thứ hai của web nghe nhạc  -->
-    <section class="section-2 flex  j-between ">
-        <div class="section-left">
-            <!-- xếp hạng các bài nhạc được nghe nhiều nhất  -->
-            <div class="top-charts">
-                <div class="title flex j-between a-center   ">
-                    <h2>TOP CHARTS</h2>
-                    <a id="top-chart-page" href="/topchart">See All</a>
-                </div>
-                <div class="media-list">
+        <div class="media-list">
 
                     {{#each data.topchart}}
                     <div class="media-item flex a-center j-between">
@@ -92,8 +92,31 @@
                     </div>
                     {{/each}}
                 </div>
+              </div>
+              <div class="media-right">
+                <span class="time">{{song_time}}</span>
+                <button class="heart"><i
+                    class="fa-solid fa-heart unlike"
+                  ></i></button>
+                <button
+                  class="plusSong"
+                  data-id="{{song_id}}"
+                  onclick="modal2Show()"
+                ><i class="fa-solid fa-plus plus"></i></button>
+              </div>
             </div>
+          {{/each}}
         </div>
+      </div>
+    </div>
+    <div class="section-right">
+      <!-- danh sách các list nhạc có cùng chủ đề bài nhạc -->
+      <div class="play-list">
+        <div class="title flex j-between a-center">
+          <h2>PLAYLIST</h2>
+          <a id="playlist-page" href="/playlist">See All</a>
+        </div>
+
         <div class="section-right">
             <!-- danh sách các list nhạc có cùng chủ đề bài nhạc -->
             <div class="play-list">
@@ -111,8 +134,17 @@
                     </div>
                     {{/each}}
 
-                </div>
+        <div class="Music flex a-center j-between">
+          {{#each playlists}}
+            <div class="list-song">
+              <a class="song" href="/playlist/{{PlaylistID}}"><img
+                  src="{{Image}}"
+                  alt=""
+                /></a>
+              <h4>{{Name}}</h4>
+              <a href="">{{Description}}</a>
             </div>
+
             <!-- danh sách bài hát của các nghệ sĩ -->
             <div class="artist-wrapper">
                 <div class="title flex j-between a-center   ">
@@ -128,11 +160,46 @@
                     </div>
                     {{/each}}
 
-                </div>
-            </div>
         </div>
-    </section>
+      </div>
+      <!-- danh sách bài hát của các nghệ sĩ -->
+      <div class="artist-wrapper">
+        <div class="title flex j-between a-center">
+          <h2>Artist</h2>
+          <a id="playlist-page" href="/artist">See All</a>
+        </div>
+        <div class="artist-list flex a-center j-between">
+          {{#each artists}}
+            <div class="artist">
+              <a class="song" href="/artist/{{ArtistID}}"><img
+                  src="{{Image}}"
+                  alt=""
+                /></a>
+              <h4>{{Name}}</h4>
+              <span>{{Country}}</span>
+            </div>
+          {{/each}}
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- modal thêm một playlist mới  -->
+  <div class="modal-2">
+    <div class="addToPlaylist">
+      <input type="text" placeholder="Search Playlist" id="playlistName" />
+      {{#each playlists}}
+        <div data-id="{{PlaylistID}}" class="list-item flex a-center">
+          <i class="fa-solid fa-list"></i>
+          <h3>{{Name}}</h3>
+        </div>
+      {{/each}}
+      <button type="button" id="btns-Save">Save</button>
+    </div>
+  </div>
+  <form method="post" id="add-song-to-playlist"></form>
 </div>
+
 
 <div class="modal-2 ">
     <div class="addToPlaylist">

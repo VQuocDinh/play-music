@@ -1,3 +1,4 @@
+
 const express = require('express')
 const morgan = require('morgan')
 const route = require('./routes')
@@ -19,6 +20,7 @@ const spotifyApi = new SpotifyWebApi({
   clientId: 'fb45c46babdf44e3b55bf6b9bd4f7aa6',
   clientSecret: '2afd65a34cf8490b9e4d5054f5100954',
 });
+
 
 // Đăng nhập vào Spotify
 spotifyApi.clientCredentialsGrant()
@@ -43,6 +45,7 @@ app.get('/search', (req, res) => {
       res.status(400).json({ error: 'Lỗi tìm kiếm.' });
     });
 
+
 });
 
 app.get('/track/:id', (req, res) => {
@@ -61,17 +64,18 @@ app.get('/track/:id', (req, res) => {
 const songs = [];
 fs.createReadStream('D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
   .pipe(csv())
-  .on('data', (row) => {
+  .on("data", (row) => {
     songs.push(row);
   })
-  .on('end', () => {
-    console.log('CSV file successfully processed.');
+  .on("end", () => {
+    console.log("CSV file successfully processed.");
   });
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/',
   failureFlash: true
 }));
+
 
 app.use(session({
   secret: 'your-secret-key',
@@ -98,6 +102,7 @@ passport.deserializeUser((id, done) => {
 // Sử dụng Passport.js trong ứng dụng Express
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // Get music list from csv file
 const songs = [];
@@ -134,7 +139,6 @@ app.get('/play/:songName', (req, res) => {
   const songName = req.params.songName;
   // Trả về file nhạc theo tên
   res.sendFile(__dirname + `/public/music/${songName}.mp3`);
-
 });
 
 // Định nghĩa route để phát nhạc
@@ -150,19 +154,21 @@ app.get('/play/:songName', (req, res) => {
 db.connection;
 
 //Set static file
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")));
 
 // Midleware xử lý dữ liệu từ form sublit lên
+
 app.use(express.urlencoded({
     extended: true //npm body parser
 }))
 
-app.use(express.json())
+app.use(express.json());
 
 //HTTP logger
-app.use(morgan('combined'))
+app.use(morgan("combined"));
 
 //Template engine
+
 app.engine('hbs', exphbs.engine({
   extname: '.hbs',
   helpers: {
@@ -178,6 +184,7 @@ app.set('views', path.join(__dirname, 'resources', 'views'))
 route(app);
 
 app.listen(port, () => {
+
   console.log(`App listening on port http://localhost:${port}`)
 })
 

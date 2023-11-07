@@ -5,8 +5,12 @@ const UserMangementController = {
     usermangement.getAllUser((err, userManagementData) => {
       if (err) {
         res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+        return;
       } else {
-        res.render("admin", {usermangement: userManagementData, layout: false });
+        res.render("admin", {
+          usermangement: userManagementData,
+          layout: false,
+        });
       }
     });
   },
@@ -87,6 +91,43 @@ const UserMangementController = {
         res.redirect("/login/admin");
       }
     });
+  },
+  searchUsersByName(req, res) {
+    const searchName = req.body.UserName; // Lấy tham số tên từ query string
+    //  Kiểm tra xem searchName có giá trị hay không
+    if (!searchName) {
+      // Nếu không có searchName, trả về tất cả User
+      const query = "SELECT * FROM users WHERE Role = b'1' and Status = b'0'";
+      db.query(query, (err, userManagementData) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("admin", {
+          usermangement: userManagementData,
+          layout: false,
+        });
+      });
+    } else {
+      // Nếu có searchName, thực hiện tìm kiếm như trong câu truy vấn trước
+      const query = "SELECT * FROM users WHERE UserName LIKE ?";
+      const searchValue = `%${searchName}%`;
+
+      db.query(query, [searchValue], (err, userManagementData) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("admin", {
+          usermangement: userManagementData,
+          layout: false,
+        });
+      });
+    }
   },
 };
 

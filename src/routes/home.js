@@ -1,3 +1,4 @@
+
 const db = require('../config/db'); // Điều này đảm bảo sử dụng kết nối cơ sở dữ liệu đã tạo
 const express = require('express')
 const router = express.Router()
@@ -21,4 +22,5 @@ router.post('/addPlaylist', homeController.addPlaylist)
 router.get('/', ensureAuthenticated, homeController.getHomePage)
 router.post('/', loginController.loginuser)
 
+router.post("/:SongID/:PlayListID", homeController.addSongToPlayList);
 module.exports = router;

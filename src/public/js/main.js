@@ -9,8 +9,8 @@ const addPlayListEle = document.getElementById("add-playlist");
 const ModalEle = document.querySelector(".modal");
 const Modal2Ele = document.querySelector(".modal-2");
 const heartEle = document.querySelectorAll(".heart");
-const more = document.querySelector('.more-icon');
-const dropDownMoreEle = document.querySelector(".drop-down-more")
+const more = document.querySelector(".more-icon");
+const dropDownMoreEle = document.querySelector(".drop-down-more");
 //silder animation
 $(document).ready(function () {
   $(".list-banner").slick({
@@ -22,8 +22,6 @@ $(document).ready(function () {
     speed: 500,
   });
 });
-
-
 
 //click heart
 [...heartEle].forEach((val) => {
@@ -58,33 +56,61 @@ document.addEventListener("click", (e) => {
   }
 });
 
-
 // click more in made for you
 document.addEventListener("click", (e) => {
-  if (e.target === more || e.target.closest(".drop-down-more") || e.target.closest(".fa-ellipsis")) {
-    dropDownMoreEle.style.display = "block"
+  if (
+    e.target === more ||
+    e.target.closest(".drop-down-more") ||
+    e.target.closest(".fa-ellipsis")
+  ) {
+    dropDownMoreEle.style.display = "block";
+  } else {
+    dropDownMoreEle.style.display = "none";
   }
-  else {
-    dropDownMoreEle.style.display = "none"
-  }
-})
-console.log(dropDownMoreEle)
+});
 
 function reloadPage() {
-  window.location.href = "/"
+  window.location.href = "/";
 }
-const mainSectionEle = document.getElementById("main-section")
-const mainHeader = document.getElementById("inframe")
+const mainSectionEle = document.getElementById("main-section");
+const mainHeader = document.getElementById("inframe");
 
 document.addEventListener("scroll", () => {
   const positionY = window.scrollY;
   if (positionY > 300) {
     mainHeader.style.opacity = "0";
     mainHeader.style.visibility = "hidden";
-
-  }
-  else {
+  } else {
     mainHeader.style.opacity = "1";
     mainHeader.style.visibility = "visible";
   }
+});
+
+function modal2Show() {
+  Modal2Ele.style.display = "block";
+}
+
+const topChartsSongEles = document.querySelectorAll(".top-charts .plusSong");
+topChartsSongEles.forEach((songElement) => {
+  songElement.addEventListener("click", (e) => {
+    const dataID = songElement.dataset.id;
+    console.log(dataID);
+  });
+});
+
+// Lắng nghe sự kiện khi người dùng nhập tên playlist
+let selectedPlaylistID = null; // Biến để lưu trữ playlistID
+const addSongForm = document.forms["add-song-to-playlist"];
+const btnSave = document.getElementById("btns-Save");
+// Lắng nghe sự kiện khi người dùng click vào một playlist cụ thể trong modal
+const playlistItems = document.querySelectorAll(".addToPlaylist .list-item");
+playlistItems.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    selectedPlaylistID = item.dataset.id; // Lưu trữ playlistID từ div được click
+    // Làm điều gì đó với selectedPlaylistID
+    console.log(selectedPlaylistID);
+
+    addSongForm.action = "/home/" + dataID + "/" + selectedPlaylistID;
+    btnSave.onclick = addSongForm.submit();
+  });
 });

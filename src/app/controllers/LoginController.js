@@ -7,6 +7,7 @@ const Topchart = require('../models/Songs');
 const { statistics } = require("./config/db");
 
 class loginController {
+
     static showLoginForm(req, res) {
         res.render('login');
     }
@@ -97,3 +98,4 @@ class loginController {
 }
 
 module.exports = loginController;
+

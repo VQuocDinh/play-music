@@ -298,15 +298,21 @@ function modal6Show() {
 function modal6close() {
   modal6Ele.style.display = "none";
 }
+function modal7how() {
+  modal7Ele.style.display = "block";
+}
+function modal7close() {
+  modal7Ele.style.display = "none";
+}
 
-// khi mà cái DOM load xong
 document.addEventListener("DOMContentLoaded", () => {
   let UserID;
   const deleteForm = document.forms["delete-user-form"];
   const btnDeleteUser = document.getElementById("btn-delete-user");
 
   $("#delete-user-modal").on("show.bs.modal", function (event) {
-    var button = $(event.relatedTarget); // Button that triggered the modal
+    var button = $(event.relatedTarget);
+    console.log(button); // Button that triggered the modal
     UserID = button.data("id");
   });
   btnDeleteUser.onclick = function (e) {
@@ -315,12 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-function modal7how() {
-  modal7Ele.style.display = "block";
-}
-function modal7close() {
-  modal7Ele.style.display = "none";
-}
 document.addEventListener("DOMContentLoaded", () => {
   let SongID;
   const deleteSongForm = document.forms["delete-song-form"];
@@ -334,4 +334,9 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteSongForm.action = "/login/admin/songmanagement/" + SongID;
     deleteSongForm.submit();
   };
+});
+
+const PasswordUserEle = document.querySelectorAll(".password_user");
+[...PasswordUserEle].forEach((val) => {
+  val.textContent = val.textContent.replace(/[^*]/g, "*");
 });
