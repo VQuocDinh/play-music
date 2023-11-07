@@ -21,6 +21,8 @@ const user = {
         });
 
     },
+
+
     getuserrole(emailid, callback) {
         const query = "SELECT Role FROM Users WHERE Email = " + "?";
         db.query(query, [emailid], (error, results) => {

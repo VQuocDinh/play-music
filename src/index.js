@@ -15,17 +15,17 @@ const port = 3000
 app.use(bodyParser.json());
 
 app.post('/search', (req, res) => {
-  // Dữ liệu cần gửi
-  const data = req.body.query;
+    // Dữ liệu cần gửi
+    const data = req.body.query;
 
-  // Gửi dữ liệu tới chương trình Python chạy trên Streamlit
-  axios.post('http://localhost:8501', data) // Thay đổi URL theo địa chỉ Python chạy Streamlit
-    .then(response => {
-      res.send(response.data);
-    })
-    .catch(error => {
-      res.status(500).send(error);
-    });
+    // Gửi dữ liệu tới chương trình Python chạy trên Streamlit
+    axios.post('http://localhost:8501', data) // Thay đổi URL theo địa chỉ Python chạy Streamlit
+        .then(response => {
+            res.send(response.data);
+        })
+        .catch(error => {
+            res.status(500).send(error);
+        });
 });
 
 // Route để xử lý dữ liệu từ web nghe nhạc
@@ -83,14 +83,15 @@ app.post('/search', (req, res) => {
 
 // Get music list from csv file
 const songs = [];
-fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
-  .pipe(csv())
-  .on('data', (row) => {
-    songs.push(row);
-  })
-  .on('end', () => {
-    console.log('CSV file successfully processed.');
-  });
+fs.createReadStream('D://plms//plmz//play-music-final//Music_Recommender_System//spotify_millsongdata.csv')
+
+.pipe(csv())
+    .on('data', (row) => {
+        songs.push(row);
+    })
+    .on('end', () => {
+        console.log('CSV file successfully processed.');
+    });
 
 
 
@@ -118,29 +119,29 @@ fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender
 
 // Endpoint để xử lý tìm kiếm bài hát
 app.get('/search', (req, res) => {
-  const searchTerm = req.query.query;
+    const searchTerm = req.query.query;
 
-  if (!searchTerm) {
-    return res.status(400).send('Please provide a search term.');
-  }
+    if (!searchTerm) {
+        return res.status(400).send('Please provide a search term.');
+    }
 
-  // Tìm kiếm trong mảng songs
-  const searchResults = songs.filter(song => {
-    return (
-      song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
-    );
-  });
-  res.render('searchresult', { searchResults })
-  //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
+    // Tìm kiếm trong mảng songs
+    const searchResults = songs.filter(song => {
+        return (
+            song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
+        );
+    });
+    res.render('searchresult', { searchResults })
+        //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
 });
 
 
 // Định nghĩa route để phát nhạc
 app.get('/play/:songName', (req, res) => {
-  const songName = req.params.songName;
-  // Trả về file nhạc theo tên
-  res.sendFile(__dirname + `/public/music/${songName}.mp3`);
+    const songName = req.params.songName;
+    // Trả về file nhạc theo tên
+    res.sendFile(__dirname + `/public/music/${songName}.mp3`);
 
 });
 
@@ -153,7 +154,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Midleware xử lý dữ liệu từ form sublit lên
 app.use(express.urlencoded({
-  extended: true //npm body parser
+    extended: true //npm body parser
 }))
 
 app.use(express.json())
@@ -163,7 +164,7 @@ app.use(morgan('combined'))
 
 //Template engine
 app.engine('hbs', exphbs.engine({
-  extname: '.hbs'
+    extname: '.hbs'
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'))
@@ -172,5 +173,5 @@ app.set('views', path.join(__dirname, 'resources', 'views'))
 route(app);
 
 app.listen(port, () => {
-  console.log(`App listening on port http://localhost:${port}`)
+    console.log(`App listening on port http://localhost:${port}`)
 })
