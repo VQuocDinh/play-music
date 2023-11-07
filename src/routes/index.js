@@ -12,7 +12,7 @@ const addmin = require('./addmin')
 const songRouter = require('./song')
 
 function route(app) {
-    app.use('/madeforyou', madeforyouRouter)
+    // app.use('/madeforyou', madeforyouRouter)
     app.use('/playlist', playlistRouter)
     app.use('/artist', artistRouter)
     app.use('/topchart', topchartRouter)

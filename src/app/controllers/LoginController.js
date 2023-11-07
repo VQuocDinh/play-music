@@ -10,25 +10,41 @@ class loginController {
 
         if (!email || !password) {
             // Hiển thị thông báo lỗi khi không nhập email hoặc password
-            const errorMessage = 'Vui lòng nhập email và mật khẩu.';
+            const errorMessage = 'Vui lòng nhập tài khoản và mật khẩu !';
             res.render('login', {
                 layout: false,
                 errorMessage: errorMessage
             });
         } else {
             User.getUserByUsername(email, (error, results) => {
-                if (error || email !== results.Email || password !== results.Password) {
-                    const errorMessage = 'Sai email hoặc mật khẩu.';
+                if (error || results=="" || !results ) {
+                    const errorMessage = 'Tài khoản hoặc mật khẩu không đúng. Vui lòng nhập lại!';
                     // Xử lý khi thông tin đăng nhập không hợp lệ
                     res.render('login', {
                         layout: false,
                         errorMessage: errorMessage,
                     });
-                } else {
+                    // res.json(results)
+                    return;
+                } 
+                else if(results.Password!=password){
+                    const errorMessage = 'Mật khẩu không chính xác. Vui lòng mật lại !.';
+                    // Xử lý khi thông tin đăng nhập không hợp lệ
+                    res.render('login', {
+                        layout: false,
+                        errorMessage: errorMessage,
+                    });
+                    // res.json(results.Password)
+                    return;
+                }
+                else {
                     if (results.Role.toString('hex') === "00") {
-                        res.redirect('/admin');
+                        res.redirect('/login/admin');
                     } else {
+                        // res.render('partials/header', {results});
+                        // res.json(results)
                         res.redirect('/');
+
                     }
                 }
             });

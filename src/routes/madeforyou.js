@@ -2,12 +2,17 @@ const express = require('express')
 const router = express.Router()
 const madeforyouController = require('../app/controllers/MadeforyouController')
 
+const songData = [];
+
+router.get('/', (req,res)=>{
+  res.render('madeforyou', {songData})
+})
+
 router.get('/', madeforyouController.getAllSongs)
 
-module.exports = router;
 
 
-//
+
 const fs = require('fs');
 const path = require('path');
 
@@ -46,6 +51,7 @@ app.get('/audio/:fileName', (req, res) => {
 });
 
 
+module.exports = router;
 
 
 

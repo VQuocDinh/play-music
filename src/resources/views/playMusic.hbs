@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát nhạc từ Spotify</title>
+</head>
+<body>
+    <button id="playButton">Phát nhạc</button>
+    <div id="spotifyPlayer"></div>
+
+    <script>
+        function playMusic() {
+            // Thay đổi nội dung của thẻ div để chèn iframe sau khi click nút
+            document.getElementById('spotifyPlayer').innerHTML = '<iframe src="https://open.spotify.com/embed/track/76dD9BdSOzsRJSGGBjOcUf" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
+        }
+
+        document.getElementById('playButton').addEventListener('click', playMusic);
+    </script>
+</body>
+</html>

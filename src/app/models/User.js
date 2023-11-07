@@ -21,23 +21,6 @@ const user = {
         });
 
     },
-    getuserrole(emailid, callback) {
-        const query = "SELECT Role FROM Users WHERE Email = " + "?";
-        db.query(query, [emailid], (error, results) => {
-            if (error) {
-                callback(error, null);
-                return;
-            }
-            if (results.length === 0) {
-                callback(null, null);
-                return;
-            }
-
-
-            callback(null, results[0]);
-        });
-    },
-
 
     addUser(user, password, birth, username, callback) {
         const query = 'INSERT INTO users (Email, Password, DateOfBirth, UserName,Role) VALUES (?, ?, ?, ?,1)';
