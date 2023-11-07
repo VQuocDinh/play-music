@@ -45,6 +45,38 @@ const ArtistManagementController = {
       });
     });
   },
+
+  searchArtistByName(req, res) {
+    const searchArtist = req.body.Name;
+    //  Kiểm tra xem searchName có giá trị hay không
+    if (!searchArtist) {
+      // Nếu không có searchName, trả về tất cả User
+      const query = "SELECT * FROM artists";
+      db.query(query, (err, artistmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("artistmanagement", { artistmanagement });
+      });
+    } else {
+      // Nếu có searchName, thực hiện tìm kiếm như trong câu truy vấn trước
+      const query = "SELECT * FROM artists WHERE Name LIKE ?";
+      const searchValue = `%${searchArtist}%`;
+
+      db.query(query, [searchValue], (err, artistmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("artistmanagement", { artistmanagement });
+      });
+    }
+  },
 };
 
 module.exports = ArtistManagementController;

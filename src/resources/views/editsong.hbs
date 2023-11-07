@@ -107,6 +107,15 @@
                   placeholder="Time"
                 />
               </div>
+              <div class="input-group">
+                <label for="album-select">Album</label>
+                <select name="AlbumID" id="album-select">
+                  <option value="">--Choose Album--</option>
+                  {{#each album}}
+                    <option value="{{AlbumID}}">{{Name}}</option>
+                  {{/each}}
+                </select>
+              </div>
               <button class="btn-save-song">
                 Save
               </button>

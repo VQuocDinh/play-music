@@ -4,46 +4,78 @@ const { log } = require("handlebars");
 
 const ContentMangementController = {
   getAllMusic: (req, res) => {
-    ContentManagement.getAllMusic((err, songmanagememt) => {
+    ContentManagement.getAllMusic((err, songmanagement) => {
       if (err) {
         res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
-      } else {
-        res.render("songmanagement", { songmanagememt });
-      
+        return;
       }
+      ContentManagement.getArtist((err, artist) => {
+        if (err) {
+          res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+          return;
+        }
+        ContentManagement.getAlbum((err, album) => {
+          if (err) {
+            res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+            return;
+          }
+          res.render("songmanagement", { songmanagement, artist, album });
+        });
+      });
     });
   },
 
   addNewSong(req, res, next) {
     const formData = req.body;
-    const query =
-      "INSERT INTO songs (Name, Image, Lyric, Link, Time, NumberListens, status_song) VALUES (?,'/img/Rectangle 33.png' ,?, ?, ?, 0, 0)";
-    const values = [
-      formData.Name,
-      formData.Lyric,
-      formData.Link,
-      formData.Time,
-    ];
+    const insertSongQuery =
+      "INSERT INTO songs (Name, Image, Lyric, Link, Time, AlbumID, NumberListens, status_song) VALUES (?, '/img/Rectangle 33.png', ?, ?, ?, ?, 0, 0)";
 
-    db.query(query, values, (err, results) => {
-      if (err) {
-        console.error("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu:", err);
-        res.status(500).send("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu");
+    const artistSongQuery =
+      "INSERT INTO artistssong (ArtistID, SongID) VALUES (?, ?)";
+
+    db.query(
+      insertSongQuery,
+      [
+        formData.Name,
+        formData.Lyric,
+        formData.Link,
+        formData.Time,
+        formData.AlbumID,
+      ],
+      (err, result) => {
+        if (err) {
+          console.error("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu:", err);
+          res.status(500).send("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu");
+        } else {
+          const newSongID = result.insertId;
+          db.query(artistSongQuery, [formData.ArtistID, newSongID], (err) => {
+            if (err) {
+              console.error("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu:", err);
+              res.status(500).send("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu");
+            } else {
+              res.redirect("/login/admin/songmanagement");
+            }
+          });
+        }
       }
-      res.redirect("/login/admin/songmanagement");
-    });
+    );
   },
 
   editSong(req, res, next) {
     const songId = req.params.SongID;
-    console.log(songId);
     ContentManagement.getSongById(songId, (err, songdetail) => {
       if (err) {
         console.error("Lỗi khi truy vấn cơ sở dữ liệu MySQL:", err);
         res.status(500).send("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu");
         return;
       }
-      res.render("editsong", { songdetail }); // Sử dụng res.render để hiển thị view
+      ContentManagement.getAlbum((err, album) => {
+        if (err) {
+          res.status(500).json({ error: "Lỗi truy vấn cơ sở dữ liệu" });
+          return;
+        }
+        res.render("editsong", { songdetail, album });
+      });
     });
   },
 
@@ -53,6 +85,7 @@ const ContentMangementController = {
     const Lyric = req.body.Lyric;
     const Link = req.body.Link;
     const Time = req.body.Time;
+    s;
     let errorMessage = "";
 
     // Kiểm tra các trường có giá trị không rỗng trước khi thực hiện câu truy vấn
@@ -79,7 +112,7 @@ const ContentMangementController = {
 
   deleteSong(req, res, next) {
     const SongID = req.params.SongID;
-    const query = "UPDATE songs set status_song = 1 WHERE SongID = ?";
+    const query = "DELETE FROM songs WHERE SongID = ?";
     db.query(query, [SongID], (err, results) => {
       if (err) {
         console.error("Lỗi khi xóa người dùng trong cơ sở dữ liệu MySQL:", err);
@@ -88,6 +121,38 @@ const ContentMangementController = {
         res.redirect("/login/admin/songmanagement");
       }
     });
+  },
+
+  searchSongByName(req, res) {
+    const searchSong = req.body.Name;
+    //  Kiểm tra xem searchName có giá trị hay không
+    if (!searchSong) {
+      // Nếu không có searchName, trả về tất cả User
+      const query = "SELECT * FROM songs";
+      db.query(query, (err, songmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("songmanagement", { songmanagement });
+      });
+    } else {
+      // Nếu có searchName, thực hiện tìm kiếm như trong câu truy vấn trước
+      const query = "SELECT * FROM songs WHERE Name LIKE ?";
+      const searchValue = `%${searchSong}%`;
+
+      db.query(query, [searchValue], (err, songmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("songmanagement", { songmanagement });
+      });
+    }
   },
 
   //chức năng playlist

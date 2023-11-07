@@ -105,7 +105,7 @@ header {
   background-color: $bg-color;
   padding: 75px 20px 0 20px;
   margin-left: auto;
-  height: unset;
+  height: 100%;
   h2 {
     font-size: 2em;
     color: $text-color-bold;
@@ -209,7 +209,7 @@ header {
     }
   }
   .content-management {
-    height: 100%;
+    margin-top: 20px;
     h4 {
       font-size: 1.5em;
       color: $text-color;
@@ -217,9 +217,10 @@ header {
     }
     .music-list {
       width: 100%;
-      max-height: 700px;
-      overflow-y: scroll;
       margin-bottom: 10px;
+      max-height: 500px;
+      overflow-y: scroll;
+
       .music {
         width: 48%;
         padding: 10px;
@@ -448,6 +449,7 @@ header {
       font-size: 1em;
       line-height: 22px;
       color: $text-color;
+      margin-right: 20px;
     }
     input,
     textarea {
@@ -504,7 +506,19 @@ textarea {
   top: 25%;
   right: 28%;
 }
-
+.close-add-album {
+  top: 28%;
+}
+.close-add-artist {
+  top: 28%;
+}
+.close-add-song {
+  top: 5%;
+}
 .player-control {
   display: none;
+}
+
+select {
+  width: 40%;
 }

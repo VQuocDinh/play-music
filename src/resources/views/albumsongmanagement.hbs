@@ -29,12 +29,12 @@
             Song Management
           </a>
 
-          <a class="active playlist" href="/login/admin/playlistmanagement">
+          <a class="playlist" href="/login/admin/playlistmanagement">
             <i class="fa-solid fa-table-list"></i>
             PlayList Management
           </a>
 
-          <a class="album" href="/login/admin/albummanagement">
+          <a class="active album" href="/login/admin/albummanagement">
             <i class="fa-solid fa-compact-disc"></i>
             ALbum Management
           </a>
@@ -61,10 +61,10 @@
             </a>
             <h3 class="name-album">{{Name}}</h3>
             <span href="" class="author">{{artist_name}}</span>
-            <button class="play">Tiếp tục phát</button>
             <div class="btnss">
-              <button class="delete"><i class="fa-solid fa-xmark"></i></button>
-              <button class="more"><i class="fa-solid fa-ellipsis"></i></button>
+              <button data-toggle="modal" data-target="#1" class="delete"><i
+                  class="fa-solid fa-xmark"
+                ></i></button>
             </div>
           {{/each}}
         </div>
@@ -102,16 +102,13 @@
   </div>
 
   <!-- modal xoá song -->
-  <div
-    id="delete-song-modal"
-    class="modal modal-delete"
-    tabindex="-1"
-    role="dialog"
-  >
+
+  <form method="post" name="delete-song-form"></form>
+  <div id="1" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Delete Song</h5>
+          <h5 class="modal-title">Modal title</h5>
           <button
             type="button"
             class="close"
@@ -122,14 +119,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Do you really want to delete this Song</p>
+          <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-          <button
-            id="btn-delete-song"
-            type="button"
-            class="btn btn-primary"
-          >Save changes</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
           <button
             type="button"
             class="btn btn-secondary"
@@ -137,51 +130,6 @@
           >Close</button>
         </div>
       </div>
-    </div>
-  </div>
-  <form method="post" name="delete-song-form"></form>
-  <div class="modal modal-6">
-    <div class="flex a-center j-center">
-      <form
-        method="post"
-        action="artistmanagement/addArtist"
-        class="modal-style song-information flex a-center j-between"
-      >
-        <h3>Song Information</h3>
-        <img src="/img/Rectangle 33.png" alt="" class="avatar-artist" />
-        <label for="avatar" class="lable-edit">Edit Photo</label>
-        <input
-          type="file"
-          name="Image"
-          id="avatar"
-          accept="image/png, image/jpeg"
-        />
-
-        <div class="input-group">
-          <label for="name-artist">Name Song</label>
-          <input
-            name="Name"
-            id="name-artist"
-            type="text"
-            placeholder="Name artist"
-          />
-        </div>
-        <div class="input-group">
-          <label for="Country">Country</label>
-          <input
-            name="Country"
-            id="Country"
-            type="text"
-            placeholder="Country"
-          />
-        </div>
-        <button class="btn-save-song">
-          Save
-        </button>
-      </form>
-      <button onclick="modal6close()" class="close-modal p-absolute"><i
-          class="fa-solid fa-xmark"
-        ></i></button>
     </div>
   </div>
   <script src="/js/admin.js"></script>

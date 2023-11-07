@@ -9,14 +9,18 @@ const AlbumManagementController = require("../app/controllers/AlbumManagementCon
 const ArtistManagementController = require("../app/controllers/ArtistManagementController");
 // quản lí user
 router.get("/admin", usermanagementController.getAllUsers);
+router.post("/admin", usermanagementController.searchUsersByName);
 router.post("/store", usermanagementController.store);
 router.get("/admin/:UserID/edit", usermanagementController.edit);
 router.post("/admin/:UserID/edit", usermanagementController.update);
 router.post("/admin/:UserID", usermanagementController.deleteUser);
 
-
 //quản lí bài hát
 router.get("/admin/songmanagement", ContentManagementController.getAllMusic);
+router.post(
+  "/admin/songmanagement/searchSong",
+  ContentManagementController.searchSongByName
+);
 router.post(
   "/admin/songmanagement/addNewSong",
   ContentManagementController.addNewSong
@@ -35,7 +39,6 @@ router.post(
   ContentManagementController.deleteSong
 );
 
-
 // quản lí playlist
 router.get(
   "/admin/playlistmanagement",
@@ -49,6 +52,10 @@ router.get(
   "/admin/playlistmanagement/:PlaylistID/playlistsongmanagement",
   PlaylistManagementController.playlistsong
 );
+router.post(
+  "/admin/playlistmanagement/searchPlaylist",
+  PlaylistManagementController.searchPlayListByName
+);
 
 //quản lí album
 router.get("/admin/albummanagement", AlbumManagementController.getAllAlbum);
@@ -60,6 +67,11 @@ router.get(
   "/admin/albummanagement/:AlbumID/albumsongmanagement",
   AlbumManagementController.albumsong
 );
+router.post(
+  "/admin/albummanagement/searchAlbum",
+  AlbumManagementController.searchAlbumByName
+);
+
 //quản lí artist
 router.get("/admin/artistmanagement", ArtistManagementController.getAllArtist);
 router.post(
@@ -70,6 +82,11 @@ router.get(
   "/admin/artistmanagement/:ArtistID/artistsongmanagement",
   ArtistManagementController.artistSong
 );
+router.post(
+  "/admin/artistmanagement/searchArtist",
+  ArtistManagementController.searchArtistByName
+);
+
 router.get("/user", (req, res) => {
   res.render("user", {
     layout: false,
@@ -82,14 +99,12 @@ router.get("/user", (req, res) => {
 //     });
 // });
 
-router.post('/', loginController.loginuser)
-router.get('/admin')
-
-
+router.post("/", loginController.loginuser);
+router.get("/admin");
 
 router.get("/", (req, res) => {
   // Render trang đăng nhập mà không sử dụng layout và các partials
-  res.render("login", {layout: false });
+  res.render("login", { layout: false });
 });
 
 module.exports = router;

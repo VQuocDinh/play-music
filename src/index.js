@@ -1,29 +1,30 @@
-const express = require('express')
-const morgan = require('morgan')
-const route = require('./routes')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const db = require('./config/db')
-const bodyParser = require('body-parser')
-const fs = require('fs');
-const csv = require('csv-parser');
+const express = require("express");
+const morgan = require("morgan");
+const route = require("./routes");
+const exphbs = require("express-handlebars");
+const path = require("path");
+const db = require("./config/db");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const csv = require("csv-parser");
 // const { Console } = require('console')
-const axios = require('axios');
-const app = express()
-const port = 3000
+const axios = require("axios");
+const app = express();
+const port = 3000;
 
 app.use(bodyParser.json());
 
-app.post('/search', (req, res) => {
+app.post("/search", (req, res) => {
   // Dữ liệu cần gửi
   const data = req.body.query;
 
   // Gửi dữ liệu tới chương trình Python chạy trên Streamlit
-  axios.post('http://localhost:8501', data) // Thay đổi URL theo địa chỉ Python chạy Streamlit
-    .then(response => {
+  axios
+    .post("http://localhost:8501", data) // Thay đổi URL theo địa chỉ Python chạy Streamlit
+    .then((response) => {
       res.send(response.data);
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).send(error);
     });
 });
@@ -48,10 +49,8 @@ app.post('/search', (req, res) => {
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // app.post('/search', (req, res) => {
 //   const searchTerm = req.body.searchTerm; // Nhận dữ liệu từ frontend
-
 
 //   // Gửi dữ liệu tới ứng dụng Python
 //   const dataToSend = { searchTerm }; // Chuẩn bị dữ liệu cần gửi
@@ -80,19 +79,18 @@ app.post('/search', (req, res) => {
 //   // console.log(searchTerm)
 // });
 
-
 // Get music list from csv file
 const songs = [];
-fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+fs.createReadStream(
+  "D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv"
+)
   .pipe(csv())
-  .on('data', (row) => {
+  .on("data", (row) => {
     songs.push(row);
   })
-  .on('end', () => {
-    console.log('CSV file successfully processed.');
+  .on("end", () => {
+    console.log("CSV file successfully processed.");
   });
-
-
 
 // app.post('/search', (req, res) => {
 //   const searchTerm = req.body.searchTerm; // Lấy dữ liệu tìm kiếm từ frontend
@@ -114,63 +112,63 @@ fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender
 //     });
 // });
 
-
-
 // Endpoint để xử lý tìm kiếm bài hát
-app.get('/search', (req, res) => {
+app.get("/search", (req, res) => {
   const searchTerm = req.query.query;
 
   if (!searchTerm) {
-    return res.status(400).send('Please provide a search term.');
+    return res.status(400).send("Please provide a search term.");
   }
 
   // Tìm kiếm trong mảng songs
-  const searchResults = songs.filter(song => {
+  const searchResults = songs.filter((song) => {
     return (
       song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
       song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
     );
   });
-  res.render('searchresult', { searchResults })
+  res.render("searchresult", { searchResults });
   //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
 });
 
-
 // Định nghĩa route để phát nhạc
-app.get('/play/:songName', (req, res) => {
+app.get("/play/:songName", (req, res) => {
   const songName = req.params.songName;
   // Trả về file nhạc theo tên
   res.sendFile(__dirname + `/public/music/${songName}.mp3`);
-
 });
-
 
 //Kiểm tra connect to db
 db.connection;
 
 //Set static file
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")));
 
 // Midleware xử lý dữ liệu từ form sublit lên
-app.use(express.urlencoded({
-  extended: true //npm body parser
-}))
+app.use(
+  express.urlencoded({
+    extended: true, //npm body parser
+  })
+);
 
-app.use(express.json())
+app.use(express.json());
 
 //HTTP logger
-app.use(morgan('combined'))
+app.use(morgan("combined"));
 
 //Template engine
-app.engine('hbs', exphbs.engine({
-  extname: '.hbs'
-}));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'))
+app.engine(
+  "hbs",
+  exphbs.engine({
+    extname: ".hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources", "views"));
 
 // Route init
 route(app);
 
 app.listen(port, () => {
-  console.log(`App listening on port http://localhost:${port}`)
-})
+  console.log(`App listening on port http://localhost:${port}`);
+});

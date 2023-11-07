@@ -62,11 +62,16 @@
                 class="fa-solid fa-arrow-up-z-a"
               ></i></button>
             <h3>Ablum list</h3>
-            <form action="" class="search search-album">
+            <form
+              method="post"
+              action="/login/admin/artistmanagement/searchArtist"
+              class="search search-album"
+            >
               <div class="input-group">
                 <label for="search-artist">
                   <i class="fa-solid fa-magnifying-glass"></i></label>
                 <input
+                  name="Name"
                   id="search-artist"
                   type="text"
                   placeholder="Search for Artist"
@@ -151,7 +156,7 @@
         action="artistmanagement/addArtist"
         class="modal-style song-information flex a-center j-between"
       >
-        <h3>Song Information</h3>
+        <h3>Artist Information</h3>
         <img src="/img/Rectangle 33.png" alt="" class="avatar-artist" />
         <label for="avatar" class="lable-edit">Edit Photo</label>
         <input
@@ -162,7 +167,7 @@
         />
 
         <div class="input-group">
-          <label for="name-artist">Name Song</label>
+          <label for="name-artist">Name Artist</label>
           <input
             name="Name"
             id="name-artist"
@@ -183,9 +188,10 @@
           Save
         </button>
       </form>
-      <button onclick="modal6close()" class="close-modal p-absolute"><i
-          class="fa-solid fa-xmark"
-        ></i></button>
+      <button
+        onclick="modal6close()"
+        class="close-modal close-add-artist p-absolute"
+      ><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>
   <script src="/js/admin.js"></script>

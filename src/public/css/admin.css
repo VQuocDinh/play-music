@@ -138,7 +138,7 @@ header {
   background-color: #17181d;
   padding: 75px 20px 0 20px;
   margin-left: auto;
-  height: unset; }
+  height: 100%; }
   .main-page h2 {
     font-size: 2em;
     color: #fcaf67;
@@ -216,16 +216,16 @@ header {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px; }
   .main-page .content-management {
-    height: 100%; }
+    margin-top: 20px; }
     .main-page .content-management h4 {
       font-size: 1.5em;
       color: #ffdecd;
       margin-bottom: 20px; }
     .main-page .content-management .music-list {
       width: 100%;
-      max-height: 700px;
-      overflow-y: scroll;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      max-height: 500px;
+      overflow-y: scroll; }
       .main-page .content-management .music-list .music {
         width: 48%;
         padding: 10px;
@@ -412,7 +412,8 @@ header {
       font-weight: 400;
       font-size: 1em;
       line-height: 22px;
-      color: #ffdecd; }
+      color: #ffdecd;
+      margin-right: 20px; }
     .modal-style .input-group input,
     .modal-style .input-group textarea {
       margin-top: 10px;
@@ -462,5 +463,17 @@ textarea {
   top: 25%;
   right: 28%; }
 
+.close-add-album {
+  top: 28%; }
+
+.close-add-artist {
+  top: 28%; }
+
+.close-add-song {
+  top: 5%; }
+
 .player-control {
   display: none; }
+
+select {
+  width: 40%; }

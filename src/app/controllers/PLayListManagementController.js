@@ -45,6 +45,38 @@ const PlayListManagementController = {
       });
     });
   },
+
+  searchPlayListByName(req, res) {
+    const searchPlayList = req.body.Name;
+    //  Kiểm tra xem searchName có giá trị hay không
+    if (!searchPlayList) {
+      // Nếu không có searchName, trả về tất cả User
+      const query = "SELECT * FROM playlist";
+      db.query(query, (err, playlistmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("playlistmanagement", { playlistmanagement });
+      });
+    } else {
+      // Nếu có searchName, thực hiện tìm kiếm như trong câu truy vấn trước
+      const query = "SELECT * FROM playlist WHERE Name LIKE ?";
+      const searchValue = `%${searchPlayList}%`;
+
+      db.query(query, [searchValue], (err, playlistmanagement) => {
+        if (err) {
+          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          return res
+            .status(500)
+            .json({ error: "Lỗi khi truy vấn cơ sở dữ liệu" });
+        }
+        res.render("playlistmanagement", { playlistmanagement });
+      });
+    }
+  },
 };
 
 module.exports = PlayListManagementController;

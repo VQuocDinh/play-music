@@ -10,6 +10,7 @@ const usermanagement = {
   getUserById: (userId, callback) => {
     db.query("SELECT * FROM users WHERE UserID = ?", [userId], callback);
   },
+
   // Các phương thức khác cho model
 };
 
