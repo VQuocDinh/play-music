@@ -8,7 +8,7 @@ const homeRouter = require('./home')
 const loginRouter = require('./login')
 const signupRouter = require('./singup')
 const addmin = require('./addmin')
-
+const present = require('./present')
 const songRouter = require('./song')
 
 function route(app) {
@@ -22,7 +22,7 @@ function route(app) {
     app.use('/admin', addmin)
     app.use('/song', songRouter)
     app.use('/', homeRouter)
-    
+    app.use('/presentplayed', present)
 
 }
 
