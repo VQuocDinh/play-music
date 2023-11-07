@@ -105,7 +105,7 @@ header {
   background-color: $bg-color;
   padding: 75px 20px 0 20px;
   margin-left: auto;
-  height: unset;
+  height: 100%;
   h2 {
     font-size: 2em;
     color: $text-color-bold;
@@ -209,7 +209,7 @@ header {
     }
   }
   .content-management {
-    height: 100%;
+    margin-top: 20px;
     h4 {
       font-size: 1.5em;
       color: $text-color;

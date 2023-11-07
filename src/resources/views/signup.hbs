@@ -44,7 +44,7 @@
 
             <div class="login flex">
                 <div class="lob ">
-                    <a class="a-login" href="../login/login.html">Login</a></div>
+                    <a class="a-login" href="/login">Login</a></div>
                 <div class="lob ">
                     <a class="a-singin" href="#">Register</a></div>
             </div>
@@ -54,7 +54,7 @@
                 <input class="Retype" type="password" placeholder="Retype Password"
                 name="Retype">
 
-                <h2>personal information</h2>
+                <h2>Personal Information</h2>
                 {{!-- <div class="name-etr">
                     <p>Name</p>
                     <div class=" flex j-between">
@@ -65,7 +65,7 @@
                 <div class="date-of-birth">
                     <p>Date Of Birth</p>
                     <div class=" flex j-between" >
-                        <input type="text" placeholder="DD-MM-YYYY" class="day" name="birth">
+                        <input type="text" placeholder="DD/MM/YYYY" class="day" name="birth">
                     </div>
                 </div>
                 <div class="mail">
@@ -78,8 +78,13 @@
         </div>
         <div style="color: red;  margin: 16px 0;" lass="error-message">
 
-     {{ errorMessage }}
+    {{errorMessage}}
                 </div>
+                <div style="color:green;  margin: 16px 0;width:100%;" lass="error-message">
+
+      {{Message}}
+                </div>
+
 
 
         <div class="login-to ">

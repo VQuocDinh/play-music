@@ -19,6 +19,19 @@ const HomeController = {
         res.render('home', { data })
     },
 
+    addPlaylist: (req,res) => {
+        const playlistName = req.body.name
+            Playlist.add(playlistName, err => {
+                if (err) {
+                    res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });
+                } else {
+                    res.redirect('/'); 
+                }
+            })
+    
+            
+        },
+
     getHomePage(req, res) {
         Playlist.getAll((errPlaylist, playlists) => {
             if (errPlaylist) {
@@ -33,10 +46,11 @@ const HomeController = {
                 }
 
                 Topchart.getBySort((errTopchart, topchart) => {
-                    if (errTopchart) {
+                    if (errTopchart) {s
                         res.status(500).json({ error: 'Lỗi khi lấy thông tin bảng xếp hạng' });
                         return;
                     }
+
 
                     const data = {
                         username: "user",
@@ -50,6 +64,10 @@ const HomeController = {
                 });
             });
         });
+    },
+
+    madeforyou(req,res) {
+        res.render('madeforyou', {songData})
     },
 
     search(req, res) {

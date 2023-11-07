@@ -4,6 +4,4 @@ const songController = require('../app/controllers/SongController')
 
 router.get('/:songId', songController.getAllSong)
 
-
-
 module.exports = router;

@@ -7,16 +7,19 @@ const ContentManagementController = require("../app/controllers/ContentManagemen
 const PlaylistManagementController = require("../app/controllers/PlayListManagementController");
 const AlbumManagementController = require("../app/controllers/AlbumManagementController");
 const ArtistManagementController = require("../app/controllers/ArtistManagementController");
+
 // quản lí user
 router.get("/admin", usermanagementController.getAllUsers);
+router.get("/user", usermanagementController.getAllUsers);
+
 router.post("/store", usermanagementController.store);
 router.get("/admin/:UserID/edit", usermanagementController.edit);
 router.post("/admin/:UserID/edit", usermanagementController.update);
 router.post("/admin/:UserID", usermanagementController.deleteUser);
 
-
 //quản lí bài hát
 router.get("/admin/songmanagement", ContentManagementController.getAllMusic);
+
 router.post(
     "/admin/songmanagement/addNewSong",
     ContentManagementController.addNewSong

@@ -23,6 +23,7 @@ class loginController {
             });
         } else {
             User.getUserByUsername(email, (error, results) => {
+
                 if (error || results == "" || !results) {
                     const errorMessage = 'Tài khoản hoặc mật khẩu không đúng. Vui lòng nhập lại!';
                     // Xử lý khi thông tin đăng nhập không hợp lệ
@@ -32,13 +33,16 @@ class loginController {
                     });
                     // res.json(results)
                     return;
+
                 } else if (results.Password != password) {
+
                     const errorMessage = 'Mật khẩu không chính xác. Vui lòng mật lại !.';
                     // Xử lý khi thông tin đăng nhập không hợp lệ
                     res.render('login', {
                         layout: false,
                         errorMessage: errorMessage,
                     });
+
                     // res.json(results)
                     return;
                 } else {
