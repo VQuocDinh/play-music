@@ -22,7 +22,7 @@ class SignupController {
             });
         } else {
             // Tạo một salt
-            const saltRounds = 10; // Số lượt lấy muối (càng cao càng an toàn, nhưng cũng càng chậm)
+            const saltRounds = 1; // Số lượt lấy muối (càng cao càng an toàn, nhưng cũng càng chậm)
             bcrypt.genSalt(saltRounds, (err, salt) => {
                 if (err) {
                     return console.error(err);
