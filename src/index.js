@@ -13,6 +13,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 
+
+const songs = [];
 const app = express()
 const port = 3000
 
@@ -60,79 +62,79 @@ app.get('/track/:id', (req, res) => {
     });
 });
 
+// // Get music list from csv file
+// const songs = [];
+// fs.createReadStream('D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+//   .pipe(csv())
+//   .on("data", (row) => {
+//     songs.push(row);
+//   })
+//   .on("end", () => {
+//     console.log("CSV file successfully processed.");
+//   });
+
+// app.post('/login', passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/',
+//   failureFlash: true
+// }));
+
+
+// app.use(session({
+//   secret: 'your-secret-key',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+
+// // Cấu hình Passport.js
+// passport.use(new LocalStrategy(
+//   (username, password, done) => {
+//     // Kiểm tra đăng nhập và gọi done(err, user) để xác định xem đăng nhập có thành công hay không
+//   }
+// ));
+
+// passport.serializeUser((user, done) => {
+//   // Lưu thông tin người dùng vào session
+//   done(null, user.id);
+// });
+
+// passport.deserializeUser((id, done) => {
+//   // Truy vấn thông tin người dùng từ cơ sở dữ liệu và gọi done(err, user) để lấy thông tin người dùng
+// });
+
+// // Sử dụng Passport.js trong ứng dụng Express
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+
 // Get music list from csv file
-const songs = [];
-fs.createReadStream('D:/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender_System/spotify_millsongdata.csv')
+
   .pipe(csv())
-  .on("data", (row) => {
+  .on('data', (row) => {
     songs.push(row);
   })
-  .on("end", () => {
-    console.log("CSV file successfully processed.");
+  .on('end', () => {
+    console.log('CSV file successfully processed.');
   });
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/',
-  failureFlash: true
-}));
-
-
-app.use(session({
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// Cấu hình Passport.js
-passport.use(new LocalStrategy(
-  (username, password, done) => {
-    // Kiểm tra đăng nhập và gọi done(err, user) để xác định xem đăng nhập có thành công hay không
-  }
-));
-
-passport.serializeUser((user, done) => {
-  // Lưu thông tin người dùng vào session
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  // Truy vấn thông tin người dùng từ cơ sở dữ liệu và gọi done(err, user) để lấy thông tin người dùng
-});
-
-// Sử dụng Passport.js trong ứng dụng Express
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-// Get music list from csv file
-const songs = [];
-fs.createReadStream('D://plms//plmz//play-music-final//Music_Recommender_System//spotify_millsongdata.csv')
-
-.pipe(csv())
-    .on('data', (row) => {
-        songs.push(row);
-    })
-    .on('end', () => {
-        console.log('CSV file successfully processed.');
-    });
 
 // Endpoint để xử lý tìm kiếm bài hát
 app.get('/search', (req, res) => {
-    const searchTerm = req.query.query;
+  const searchTerm = req.query.query;
 
-    if (!searchTerm) {
-        return res.status(400).send('Please provide a search term.');
-    }
+  if (!searchTerm) {
+    return res.status(400).send('Please provide a search term.');
+  }
 
-    // Tìm kiếm trong mảng songs
-    const searchResults = songs.filter(song => {
-        return (
-            song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
-        );
-    });
-    res.render('searchresult', { searchResults })
-        //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
+  // Tìm kiếm trong mảng songs
+  const searchResults = songs.filter(song => {
+    return (
+      song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
+    );
+  });
+  res.render('searchresult', { searchResults })
+  //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
 });
 
 app.get('/play/:songName', (req, res) => {
@@ -143,9 +145,9 @@ app.get('/play/:songName', (req, res) => {
 
 // Định nghĩa route để phát nhạc
 app.get('/play/:songName', (req, res) => {
-    const songName = req.params.songName;
-    // Trả về file nhạc theo tên
-    res.sendFile(__dirname + `/public/music/${songName}.mp3`);
+  const songName = req.params.songName;
+  // Trả về file nhạc theo tên
+  res.sendFile(__dirname + `/public/music/${songName}.mp3`);
 
 });
 
@@ -159,7 +161,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Midleware xử lý dữ liệu từ form sublit lên
 
 app.use(express.urlencoded({
-    extended: true //npm body parser
+  extended: true //npm body parser
 }))
 
 app.use(express.json());
