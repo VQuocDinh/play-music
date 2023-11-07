@@ -75,7 +75,7 @@
                 </div>
                 <div class="media-list">
 
-                    {{#each topchart}}
+                    {{#each data.topchart}}
                     <div class="media-item flex a-center j-between">
                         <div class="media-left flex a-center ">
                             <a href=""><img src="{{song_img}}" alt=""></a>
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="Music flex a-center j-between ">
-                    {{#each playlists}}
+                    {{#each data.playlists}}
                     <div class="list-song ">
                         <a class="song" href="/playlist/{{PlaylistID}}"><img src="{{Image}}" alt=""></a>
                         <h4>{{Name}}</h4>
@@ -120,7 +120,7 @@
                     <a id="playlist-page" href="/artist">See All</a>
                 </div>
                 <div class="artist-list flex a-center j-between ">
-                    {{#each artists}}
+                    {{#each data.artists}}
                     <div class="artist ">
                         <a class="song" href="/artist/{{ArtistID}}"><img src="{{Image}}" alt=""></a>
                         <h4>{{Name}}</h4>

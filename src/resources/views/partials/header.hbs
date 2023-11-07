@@ -1,9 +1,10 @@
 <header id="main-header" class="flex a-center p-fixed t-0 r-0">
     {{#each results}}
     <div class="account flex a-center">
-        <img src="{{Image}}" alt="">
+
+        <img src= "/img/userlogo.png"alt="">
         <a href="/login" id="loginButton">
-            <h4 class="name">{{UserName}}</h4>
+            <h4 class="name">{{data.username}}</h4>
         </a>
     </div>
     {{/each}}
