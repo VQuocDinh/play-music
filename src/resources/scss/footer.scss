@@ -1,0 +1,49 @@
+@import "flex";
+@import "variables";
+@import "position";/*  Thanh time nhạc */
+
+
+.progress-area {
+    height: 6px;
+    width: 100%;
+    background: var(--slate-100);
+    border-radius: 50px;
+    cursor: pointer;
+    background:#615b5b;
+  }
+  
+  .progress-area .progress-bar {
+    position: relative;
+    height: inherit;
+    border-radius: inherit;
+    width: 0%;
+    background: rgb(178, 152, 19);
+  }
+  
+  .progress-bar::before {
+    content: "";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    background: var(--greenshadow);
+    border-radius: inherit;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .progress-area:hover .progress-bar::before {
+    opacity: 1;
+  }
+  .progress-area:hover .progress-bar::before {
+  opacity: 1;
+  }
+  
+  .timer-duration {
+    margin-top: 2px;
+  }
+  .timer-duration span {
+    font-size: 13px;
+  }
+  

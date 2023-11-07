@@ -1,56 +1,56 @@
 <div class="main-page">
-        <section>
-            <div class="title flex a-center">
-                <h2>Artist</h2>
-                <button id="play">
-                    <i class="fa-solid fa-caret-right"></i>
-                </button>
+    <section>
+        <div class="title flex a-center">
+            <h2>Artist</h2>
+            <button id="play">
+                <i class="fa-solid fa-caret-right"></i>
+            </button>
+        </div>
+        <div class="Music flex a-center ">
+            {{#each artist}}
+            <div class="list-song ">
+                <a class="song" href="/artist/{{ArtistID}}"><img src="{{Image}}" alt=""></a>
+                <a href="" class="name-list">{{Name}}</a>
+                <span href="">{{Country}}</span>
             </div>
-            <div class="Music flex a-center ">
-                {{#each artist}}
-                <div class="list-song ">
-                    <a class="song" href="/artist/{{ArtistID}}"><img src="{{Image}}" alt=""></a>
-                    <a href="" class="name-list">{{Name}}</a>
-                    <span href="">{{Country}}</span>
-                </div>
-                {{/each}}
-                {{!-- <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-            </div> --}}
-            <!-- <div class="titile-2 flex a-center ">
+            {{/each}}
+            {{!-- <div class="list-song ">
+                <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+            <div class="list-song ">
+                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
+                <a href="" class="name-list">Ghostmusic</a>
+                <span href="">Derva</span>
+            </div>
+        </div> --}}
+        <!-- <div class="titile-2 flex a-center ">
                 <h3>My PLaylist </h3>
                 <button class="add">
                     <i class="fa-solid fa-plus"></i>
@@ -98,7 +98,7 @@
                     <span href="">Derva</span>
                 </div>
             </div> -->
-            <!-- <div class="bottom-section">
+        <!-- <div class="bottom-section">
                 <h3>Bài hát</h3>
                 <div class="line"></div>
                 <nav>
@@ -222,5 +222,23 @@
                     </div>
                 </div>
             </div> -->
-        </section>
+    </section>
+</div>
+
+<div class="modal-2 ">
+        <div class="addToPlaylist">
+            <input type="text" placeholder="Search Playlist" id="playlistName">
+            <div class="list-item flex a-center">
+                <i class="fa-solid fa-list"></i>
+                <h3>Nhạc vui</h3>
+            </div>
+            <div class="list-item flex a-center">
+                <i class="fa-solid fa-list"></i>
+                <h3>Nhạc vui</h3>
+            </div>
+            <div class="list-item flex a-center">
+                <i class="fa-solid fa-list"></i>
+                <h3>Nhạc vui</h3>
+            </div>
+        </div>
     </div>

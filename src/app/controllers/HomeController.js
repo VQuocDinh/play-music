@@ -7,8 +7,30 @@ const songData = [];
 
 const HomeController = {
     index(req, res) {
-        res.render('home');
+
+        const data = {
+            username: "user",
+            image: "/img/userlogo.png",
+            playlists: playlists,
+            artists: artists,
+            topchart: topchart,
+        };
+
+        res.render('home', { data })
     },
+
+    addPlaylist: (req,res) => {
+        const playlistName = req.body.name
+            Playlist.add(playlistName, err => {
+                if (err) {
+                    res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });
+                } else {
+                    res.redirect('/'); 
+                }
+            })
+    
+            
+        },
 
     getHomePage(req, res) {
         Playlist.getAll((errPlaylist, playlists) => {
@@ -24,24 +46,45 @@ const HomeController = {
                 }
 
                 Topchart.getBySort((errTopchart, topchart) => {
-                    if (errTopchart) {
+                    if (errTopchart) {s
                         res.status(500).json({ error: 'Lỗi khi lấy thông tin bảng xếp hạng' });
                         return;
                     }
 
-                    res.render('home', { playlists, artists, topchart, songData });
+
+                    const data = {
+                        username: "user",
+
+                        playlists: playlists,
+                        artists: artists,
+                        topchart: topchart,
+                    };
+
+                    res.render('home', { data })
                 });
             });
         });
     },
 
+    madeforyou(req,res) {
+        res.render('madeforyou', {songData})
+    },
+
     search(req, res) {
         const searchQuery = req.query.query;
-    
+
         if (!searchQuery) {
-            return res.render('home');
+            const data = {
+                username: "user",
+
+                playlists: playlists,
+                artists: artists,
+                topchart: topchart,
+            };
+
+            res.render('home', { data })
         }
-    
+
         Home.search(searchQuery, (err, searchResults) => {
             if (err) {
                 return res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });

@@ -1,4 +1,10 @@
 const User = require("../models/User");
+const bcrypt = require('bcrypt');
+const Home = require('../models/Home');
+const Playlist = require('../models/Playlist');
+const Artist = require('../models/Artist');
+const Topchart = require('../models/Songs');
+const { statistics } = require("./config/db");
 
 class loginController {
     static showLoginForm(req, res) {
@@ -10,39 +16,84 @@ class loginController {
 
         if (!email || !password) {
             // Hiển thị thông báo lỗi khi không nhập email hoặc password
-            const errorMessage = 'Vui lòng nhập email và mật khẩu.';
+            const errorMessage = 'Vui lòng nhập tài khoản và mật khẩu !';
             res.render('login', {
                 layout: false,
                 errorMessage: errorMessage
             });
         } else {
             User.getUserByUsername(email, (error, results) => {
-                if (error || email !== results.Email || password !== results.Password) {
-                    const errorMessage = 'Sai email hoặc mật khẩu.';
+
+                if (error || results == "" || !results) {
+                    const errorMessage = 'Tài khoản hoặc mật khẩu không đúng. Vui lòng nhập lại!';
                     // Xử lý khi thông tin đăng nhập không hợp lệ
                     res.render('login', {
                         layout: false,
                         errorMessage: errorMessage,
                     });
+                    // res.json(results)
+                    return;
+
+                } else if (results.Password != password) {
+
+                    const errorMessage = 'Mật khẩu không chính xác. Vui lòng mật lại !.';
+                    // Xử lý khi thông tin đăng nhập không hợp lệ
+                    res.render('login', {
+                        layout: false,
+                        errorMessage: errorMessage,
+                    });
+
+                    // res.json(results)
+                    return;
                 } else {
                     if (results.Role.toString('hex') === "00") {
-                        res.redirect('/admin');
+                        res.redirect('/login/admin');
                     } else {
-                        res.redirect('/');
+
+
+                        Playlist.getAll((errPlaylist, playlists) => {
+                            if (errPlaylist) {
+                                res.status(500).json({ error: 'Lỗi khi lấy danh sách phát' });
+                                return;
+                            }
+
+                            Artist.getAll((errArtist, artists) => {
+                                if (errArtist) {
+                                    res.status(500).json({ error: 'Lỗi khi lấy thông tin nghệ sĩ' });
+                                    return;
+                                }
+
+                                Topchart.getBySort((errTopchart, topchart) => {
+                                    if (errTopchart) {
+                                        res.status(500).json({ error: 'Lỗi khi lấy thông tin bảng xếp hạng' });
+                                        return;
+                                    }
+                                    const data = {
+                                        username: results.UserName,
+
+                                        playlists: playlists,
+                                        artists: artists,
+                                        topchart: topchart,
+                                    };
+
+                                    res.render('home', { data })
+
+                                    // res.render('home', { playlists, artists, topchart, songData });
+                                });
+                            });
+                        });
+
+
+
+
+
                     }
                 }
             });
         }
     }
+
+
 }
 
-
-
-
-
-
-
-
-
-
-module.exports = loginController
+module.exports = loginController;

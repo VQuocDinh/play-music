@@ -2,6 +2,8 @@
 const Playlist = require('../models/Playlist');
 
 const PlaylistController = {
+    
+
     getAllPlaylist: (req, res) => {
         Playlist.getAll((err, playlist) => {
             if (err) {
