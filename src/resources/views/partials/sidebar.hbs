@@ -1,7 +1,10 @@
 <div class="slide-page p-fixed t-0 l-0">
     <!-- Menu -->
     <div class="Menu">
-        <a id="Menu" href="/">Menu</a>
+        <a id="Menu" href="/">
+            <img class="logo" src="/img/logo.png" alt="">
+        </a>
+
         <div class="menu-list">
             <a href="/presentplayed">Present played</a>
             <a href="/topchart">Top Charts</a>
@@ -30,7 +33,18 @@
         <!-- nút tạo thêm mới playlist -->
         <button id="add-playlist">
             Add PLaylist
-            <i class="fa-solid fa-plus"></i>
+            {{!-- <i class="fa-solid fa-plus"></i> --}}
         </button>
     </div>
 </div>
+
+<form method="post" action="/addPlaylist">
+<div class="modal">
+        <div class="addplaylist flex a-center j-center">
+            <h3>Enter playlist name</h3>
+            <input type="text" name ="name" placeholder="Playlist name">
+            <button class="confirm">Okay</button>
+        </div>
+    </div>
+</form>
+

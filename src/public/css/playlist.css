@@ -302,7 +302,8 @@ header {
     .main-page section .Music {
       margin-top: 20px;
       overflow-y: scroll;
-      max-height: 800px; }
+      max-height: 800px;
+      justify-content: left; }
       .main-page section .Music .list-song {
         padding: 10px;
         border-radius: 20px;

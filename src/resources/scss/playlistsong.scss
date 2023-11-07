@@ -1,6 +1,7 @@
 @import "flex";
 @import "variables";
 @import "position";
+
 html,
 body,
 input,
@@ -8,18 +9,28 @@ button {
   font-family: "Inter", sans-serif;
   font-size: 16px;
 }
+
 .main-container {
   width: 100%;
   height: 100%;
 }
+
 .slide-page {
   width: 15%;
   height: 94%;
   box-sizing: border-box;
   background-color: $bg-slider;
+
   .Menu {
     padding: 25px 0 0 25px;
     height: 35%;
+
+    .logo {
+      width: 105px;
+      
+
+    }
+
     #Menu {
       font-size: 1.5em;
       color: $text-color;
@@ -27,6 +38,7 @@ button {
       font-weight: 700;
       line-height: normal;
     }
+
     .menu-list {
       a {
         display: block;
@@ -36,22 +48,26 @@ button {
         font-weight: 700;
         margin-top: 16px;
         transition: 0.3s;
+
         &:hover {
           transform: translateX(10px);
         }
       }
     }
   }
+
   .line {
     width: 80%;
     height: 1px;
     background-color: $bg-line;
     margin: auto;
   }
+
   #Library {
     padding: 20px;
     height: 65%;
     flex-direction: column;
+
     a {
       color: $text-color;
       font-size: 1.5em;
@@ -59,27 +75,33 @@ button {
       font-weight: 700;
       line-height: normal;
     }
+
     .list-music {
       margin-top: 20px;
+
       .playlist {
         padding: 5px;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.3s;
+
         img {
           margin-right: 24px;
           width: 56px;
         }
+
         .detail {
           h3 {
             color: $text-color-bold;
             font-size: 1em;
           }
+
           a {
             color: $text-color;
             font-size: 0.7em;
           }
         }
+
         &:hover {
           background-color: $bg-color;
           opacity: 0.8;
@@ -87,6 +109,7 @@ button {
         }
       }
     }
+
     #add-playlist {
       color: $text-color;
       font-size: 1em;
@@ -97,6 +120,7 @@ button {
       padding: 5px;
       border: 1px solid $text-color;
       transition: 0.3s;
+
       &:hover {
         background-color: $bg-color;
         opacity: 0.8;
@@ -111,34 +135,43 @@ button {
   width: 100%;
   padding: 10px 20px;
   background-color: $bg-color-1;
+  height: 110px;
+
   .list-music {
     a {
       img {
-        width: 40px;
+        width: 70px;
         margin-right: 24px;
       }
     }
+
     .detail {
       h3 {
         color: $text-color-bold;
         font-size: 1em;
       }
+
       a {
         color: $text-color;
         font-size: 0.7em;
       }
     }
   }
+
   .control-bar {
-    width: 40vw;
+    //width: 1000px;
     flex-direction: column;
+    margin-right: 400px;
+
     .actions {
       margin-bottom: 10px;
+
       button {
         cursor: pointer;
         font-size: 1.25em;
         color: $text-color;
       }
+
       .pause {
         margin: 0 70px;
       }
@@ -147,17 +180,21 @@ button {
 
   .duration-bar {
     width: 100%;
+
     span {
       color: $text-color;
       opacity: 0.5;
       font-size: 0.75em;
     }
+
     .left {
       margin-right: 5px;
     }
+
     .right {
       margin-left: 5px;
     }
+
     .time-bar {
       width: 80%;
       height: 5px;
@@ -166,6 +203,7 @@ button {
       border-radius: 20px;
     }
   }
+
   .volume {
     i {
       color: #ffffff;
@@ -175,6 +213,7 @@ button {
       padding: 5px;
       border-radius: 50%;
     }
+
     .volume-bar {
       width: 100px;
       height: 5px;
@@ -192,11 +231,14 @@ button {
   background-color: $bg-color;
   padding-bottom: 75px;
   height: 100%;
+
   header {
     width: 100%;
     padding: 20px;
+
     .arrows {
       margin-right: 60px;
+
       button {
         color: $text-color;
         font-size: 1.25em;
@@ -204,20 +246,25 @@ button {
         cursor: pointer;
       }
     }
+
     form {
       width: 50%;
+
       .input-group {
         background-color: $bg-slider;
         padding: 10px;
         border-radius: 20px;
+
         label {
           font-size: 1em;
           color: #ffffff;
         }
+
         input {
           width: 95%;
           color: $text-color;
           opacity: 0.8;
+
           &::placeholder {
             color: $text-color;
             font-size: 0.875em;
@@ -225,11 +272,14 @@ button {
         }
       }
     }
+
     .account {
       margin-left: auto;
+
       img {
         width: 40px;
       }
+
       .name {
         color: $text-color;
         font-size: 1.25em;
@@ -239,21 +289,26 @@ button {
       }
     }
   }
+
   .album-detail-container {
     width: 100%;
     height: 100%;
     padding: 20px;
+
     .album-poster {
       width: 20%;
       flex-direction: column;
+
       .poster {
         position: relative;
         overflow: hidden;
         border-radius: 20px;
+
         img {
           width: 300px;
           transition: 0.3s;
         }
+
         &::after {
           content: "\f04b";
           font-family: "Font Awesome 5 Free";
@@ -276,6 +331,7 @@ button {
           justify-content: center;
           transition: 0.3s;
         }
+
         &::before {
           content: "";
           width: 100%;
@@ -289,16 +345,19 @@ button {
           visibility: hidden;
           transition: 0.3s;
         }
+
         &:hover {
           img {
             transform: scale(1.2);
             z-index: 1;
           }
+
           &::before {
             opacity: 0.5;
             visibility: visible;
             z-index: 2;
           }
+
           &::after {
             opacity: 1;
             visibility: visible;
@@ -306,17 +365,20 @@ button {
           }
         }
       }
+
       .name-album {
         font-size: 1.5em;
         color: $text-color-bold;
         font-weight: 600;
         margin: 10px 0;
       }
+
       .author {
         font-size: 1em;
         color: $text-color;
         display: block;
       }
+
       .play {
         color: $text-color;
         padding: 10px;
@@ -326,12 +388,14 @@ button {
         width: 60%;
         cursor: pointer;
         transition: 0.3s;
+
         &:hover {
           background-color: $hover-color;
           color: #ffffff;
           border: 1px solid $hover-color;
         }
       }
+
       .btns {
         button {
           i {
@@ -343,6 +407,7 @@ button {
             margin-right: 5px;
             transition: 0.3s;
             cursor: pointer;
+
             &:hover {
               background-color: $hover-color;
             }
@@ -353,6 +418,7 @@ button {
 
     .album-song {
       width: 75%;
+
       .header {
         .arrange {
           i {
@@ -365,11 +431,13 @@ button {
             cursor: pointer;
           }
         }
+
         h3 {
           color: $text-color;
           font-size: 1em;
           font-weight: 600;
         }
+
         .line {
           width: 100%;
           height: 1px;
@@ -378,31 +446,44 @@ button {
         }
       }
     }
+
     .media-list {
       width: 100%;
       margin-top: 10px;
+
       .media-item {
         padding: 10px;
         border-radius: 20px;
         margin-bottom: 15px;
         transition: 0.3s;
         cursor: pointer;
+
         .media-left {
           img {
             margin-right: 20px;
             width: 50px;
           }
+
           .detail {
             h3 {
               color: $text-color;
               font-size: 1em;
             }
+
             span {
               color: $text-color;
               font-size: 0.7em;
             }
+
+            a {
+              color: $text-color;
+              margin-top: 8px;
+              opacity: 0.7;
+
+            }
           }
         }
+
         .media-right {
           .time {
             font-size: 1em;
@@ -410,6 +491,7 @@ button {
             color: $text-color;
             margin-right: 15px;
           }
+
           button {
             font-size: 1em;
             font-weight: 600;
@@ -417,13 +499,16 @@ button {
             margin-right: 15px;
             cursor: pointer;
           }
+
           .like {
             color: #a50004;
           }
+
           .unlike {
             color: $text-color;
           }
         }
+
         &:hover {
           border-radius: 20px;
           background-color: #f17a37;
@@ -446,6 +531,7 @@ button {
       transition: 0.3s;
       margin-top: 10px;
       cursor: pointer;
+
       &:hover {
         background-color: $hover-color;
       }
@@ -461,6 +547,7 @@ button {
   border-radius: 50px;
   cursor: pointer;
 }
+
 .progress-area .progress-bar {
   position: relative;
   height: inherit;
@@ -468,6 +555,7 @@ button {
   width: 0%;
   background: var(--green);
 }
+
 .progress-bar::before {
   content: "";
   position: absolute;
@@ -481,6 +569,8 @@ button {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
+
 .progress-area:hover .progress-bar::before {
   opacity: 1;
+
 }

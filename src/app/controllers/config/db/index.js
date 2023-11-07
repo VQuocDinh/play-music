@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
+
   host: "localhost", // Thay đổi thông tin kết nối theo cấu hình của bạn
   user: "root",
   database: "play-music",
@@ -12,6 +13,7 @@ connection.connect((err) => {
   } else {
     console.log("Kết nối thành công đến cơ sở dữ liệu");
   }
+
 });
 
 module.exports = connection;

@@ -13,190 +13,41 @@
 
         <div class="line"></div>
         <div class="Music flex a-center ">
-            <div class="list-song ">
+         {{!-- {{#each songs }}   
+            <div id="{{id}}" class="list-song ">
                 <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
+                <a href="" class="name-list">{{title}}</a>
                 <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
-            <div class="list-song ">
-                <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                <a href="" class="name-list">Ghostmusic</a>
-                <span href="">Derva</span>
-            </div>
+            </div> 
+          {{/each}}   
+           --}}
         </div>
 
         <div class="bottom-section">
             <div class="media-list">
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
+                {{#each resulta}}
+                 <div  li-index="{{link}}" >
+                    <div class="media-item flex a-center j-between">
+                <div class="media-left flex a-center ">
+                    <a href=" "><img src="{{image}}" alt=""></a>
+                <div class="detail">
+                    <h3>{{title}}</h3>
+                    <a href=""></a>
+                </div>
+                    <audio id = "main-audio"class="" src="" type="audio/mpeg" ></audio>
+                        
+                <span class="audio-duration"  ></span>
+                </div>
+                    <div class="media-right">
+                            <span class="time" id="">{{song_time}} </span>
+                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
+                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
                         </div>
                     </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
                 </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart"><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                        <div class="detail">
-                            <h3>Ghostmusic</h3>
-                            <a href="">Derva</a>
-                        </div>
-                    </div>
-                    <div class="media-right">
-                        <span class="time">2:10</span>
-                        <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
-                </div>
+                {{/each}}      
+              
+               
             </div>
         </div>
     </section>

@@ -66,6 +66,8 @@ button {
   .slide-page .Menu {
     padding: 25px 0 0 25px;
     height: 35%; }
+    .slide-page .Menu .logo {
+      width: 105px; }
     .slide-page .Menu #Menu {
       font-size: 1.5em;
       color: #ffdecd;
@@ -136,9 +138,10 @@ button {
 .player-control {
   width: 100%;
   padding: 10px 20px;
-  background-color: #0d0e10; }
+  background-color: #0d0e10;
+  height: 110px; }
   .player-control .list-music a img {
-    width: 40px;
+    width: 70px;
     margin-right: 24px; }
   .player-control .list-music .detail h3 {
     color: #fcaf67;
@@ -147,8 +150,8 @@ button {
     color: #ffdecd;
     font-size: 0.7em; }
   .player-control .control-bar {
-    width: 40vw;
-    flex-direction: column; }
+    flex-direction: column;
+    margin-right: 400px; }
     .player-control .control-bar .actions {
       margin-bottom: 10px; }
       .player-control .control-bar .actions button {
@@ -358,6 +361,10 @@ button {
         .main-page .album-detail-container .media-list .media-item .media-left .detail span {
           color: #ffdecd;
           font-size: 0.7em; }
+        .main-page .album-detail-container .media-list .media-item .media-left .detail a {
+          color: #ffdecd;
+          margin-top: 8px;
+          opacity: 0.7; }
         .main-page .album-detail-container .media-list .media-item .media-right .time {
           font-size: 1em;
           font-weight: 400;

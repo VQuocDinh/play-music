@@ -1,16 +1,14 @@
 <!-- phần nội dung chính của website -->
 
 <div id="home-mainpage" class="main-page">
-  <!-- banner của website  -->
-  <div id="inframe">
 
-    <iframe
-      id="iframe"
-      src="http://localhost:8501"
-      style="width:100%; height:500px; border:none; overflow:hidden;"
-    ></iframe>
-  </div>
-  {{! <div class="banner p-relative a-center j-center">
+    <!-- banner của website  -->
+    <div id="inframe">
+
+        <iframe id="iframe" src="http://localhost:8501"
+            style="width:100%; height:500px; border:none; overflow:hidden;"></iframe>
+    </div>
+    {{!-- <div class="banner p-relative a-center j-center">
         <div class="list-banner flex a-center j-center">
             <div class="item">
                 <img class="img1" src="/img/Rectangle 96.png" alt="slider image 1 ">
@@ -77,13 +75,22 @@
         </div>
         <div class="media-list">
 
-          {{#each topchart}}
-            <div class="media-item flex a-center j-between">
-              <div class="media-left flex a-center">
-                <a href=""><img src="{{song_img}}" alt="" /></a>
-                <div class="detail">
-                  <h3>{{song_name}}</h3>
-                  <a href="">{{artist_name}}</a>
+                    {{#each data.topchart}}
+                    <div class="media-item flex a-center j-between">
+                        <div class="media-left flex a-center ">
+                            <a href=""><img src="{{song_img}}" alt=""></a>
+                            <div class="detail">
+                                <h3>{{song_name}}</h3>
+                                <a href="">{{artist_name}}</a>
+                            </div>
+                        </div>
+                        <div class="media-right">
+                            <span class="time">{{song_time}}</span>
+                            <button class="heart"><i class="fa-solid fa-heart unlike"></i></button>
+                            <button><i class="fa-solid fa-plus plus"></i></button>
+                        </div>
+                    </div>
+                    {{/each}}
                 </div>
               </div>
               <div class="media-right">
@@ -110,6 +117,23 @@
           <a id="playlist-page" href="/playlist">See All</a>
         </div>
 
+        <div class="section-right">
+            <!-- danh sách các list nhạc có cùng chủ đề bài nhạc -->
+            <div class="play-list">
+                <div class="title flex j-between a-center   ">
+                    <h2>PLAYLIST</h2>
+                    <a id="playlist-page" href="/playlist">See All</a>
+                </div>
+
+                <div class="Music flex a-center j-between ">
+                    {{#each data.playlists}}
+                    <div class="list-song ">
+                        <a class="song" href="/playlist/{{PlaylistID}}"><img src="{{Image}}" alt=""></a>
+                        <h4>{{Name}}</h4>
+                        <a href="">{{Description}}</a>
+                    </div>
+                    {{/each}}
+
         <div class="Music flex a-center j-between">
           {{#each playlists}}
             <div class="list-song">
@@ -120,7 +144,21 @@
               <h4>{{Name}}</h4>
               <a href="">{{Description}}</a>
             </div>
-          {{/each}}
+
+            <!-- danh sách bài hát của các nghệ sĩ -->
+            <div class="artist-wrapper">
+                <div class="title flex j-between a-center   ">
+                    <h2>Artist</h2>
+                    <a id="playlist-page" href="/artist">See All</a>
+                </div>
+                <div class="artist-list flex a-center j-between ">
+                    {{#each data.artists}}
+                    <div class="artist ">
+                        <a class="song" href="/artist/{{ArtistID}}"><img src="{{Image}}" alt=""></a>
+                        <h4>{{Name}}</h4>
+                        <span>{{Country}}</span>
+                    </div>
+                    {{/each}}
 
         </div>
       </div>
@@ -161,16 +199,27 @@
   </div>
   <form method="post" id="add-song-to-playlist"></form>
 </div>
-<script
-  type="text/javascript"
-  src="https://code.jquery.com/jquery-1.11.0.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-></script>
+
+
+<div class="modal-2 ">
+    <div class="addToPlaylist">
+        <input type="text" placeholder="Search Playlist" id="playlistName">
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
+        </div>
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
+        </div>
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="/js/main.js"></script>

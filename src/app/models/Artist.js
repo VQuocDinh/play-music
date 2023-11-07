@@ -11,10 +11,12 @@ const Artist = {
   },
 
   getAllArtistSong(id, callback) {
-    const query = "SELECT artists.ArtistID AS artist_id, songs.SongID AS song_id, songs.Name AS song_name, artists.Name AS artist_name, songs.Image AS song_img FROM songs INNER JOIN artistssong ON songs.SongID = artistssong.SongID INNER JOIN artists ON artistssong.ArtistID = artists.ArtistID WHERE artists.ArtistID = ?;";
+    const query = "SELECT songs.Time AS song_time, artists.ArtistID AS artist_id, songs.SongID AS song_id, songs.Name AS song_name, songs.link as link,artists.Name AS artist_name, songs.Image AS song_img FROM songs INNER JOIN artistssong ON songs.SongID = artistssong.SongID INNER JOIN artists ON artistssong.ArtistID = artists.ArtistID WHERE artists.ArtistID = ?;";
     // Truyền tham số vào mảng
     db.query(query, [id], callback);
   },
+
+  
 };
 
 module.exports = Artist;

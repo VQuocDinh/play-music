@@ -6,22 +6,90 @@ const Topchart = require("../models/Songs");
 const songData = [];
 
 const HomeController = {
-  index(req, res) {
-    res.render("home");
-  },
 
-  getHomePage(req, res) {
-    Playlist.getAll((errPlaylist, playlists) => {
-      if (errPlaylist) {
-        res.status(500).json({ error: "Lỗi khi lấy danh sách phát" });
-        return;
-      }
+    index(req, res) {
 
-      Artist.getAll((errArtist, artists) => {
-        if (errArtist) {
-          res.status(500).json({ error: "Lỗi khi lấy thông tin nghệ sĩ" });
-          return;
+        const data = {
+            username: "user",
+            image: "/img/userlogo.png",
+            playlists: playlists,
+            artists: artists,
+            topchart: topchart,
+        };
+
+        res.render('home', { data })
+    },
+
+    addPlaylist: (req,res) => {
+        const playlistName = req.body.name
+            Playlist.add(playlistName, err => {
+                if (err) {
+                    res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });
+                } else {
+                    res.redirect('/'); 
+                }
+            })
+    
+            
+        },
+
+    getHomePage(req, res) {
+        Playlist.getAll((errPlaylist, playlists) => {
+            if (errPlaylist) {
+                res.status(500).json({ error: 'Lỗi khi lấy danh sách phát' });
+                return;
+            }
+
+            Artist.getAll((errArtist, artists) => {
+                if (errArtist) {
+                    res.status(500).json({ error: 'Lỗi khi lấy thông tin nghệ sĩ' });
+                    return;
+                }
+
+                Topchart.getBySort((errTopchart, topchart) => {
+                    if (errTopchart) {s
+                        res.status(500).json({ error: 'Lỗi khi lấy thông tin bảng xếp hạng' });
+                        return;
+                    }
+
+
+                    const data = {
+                        username: "user",
+
+                        playlists: playlists,
+                        artists: artists,
+                        topchart: topchart,
+                    };
+
+                    res.render('home', { data })
+                });
+            });
+        });
+    },
+
+    madeforyou(req,res) {
+        res.render('madeforyou', {songData})
+    },
+
+    search(req, res) {
+        const searchQuery = req.query.query;
+
+        if (!searchQuery) {
+            const data = {
+                username: "user",
+
+                playlists: playlists,
+                artists: artists,
+                topchart: topchart,
+            };
+
+            res.render('home', { data })
         }
+
+        Home.search(searchQuery, (err, searchResults) => {
+            if (err) {
+                return res.status(500).json({ error: 'Lỗi truy vấn cơ sở dữ liệu' });
+            }
 
         Topchart.getBySort((errTopchart, topchart) => {
           if (errTopchart) {

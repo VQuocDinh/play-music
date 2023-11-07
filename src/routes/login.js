@@ -7,9 +7,13 @@ const ContentManagementController = require("../app/controllers/ContentManagemen
 const PlaylistManagementController = require("../app/controllers/PlayListManagementController");
 const AlbumManagementController = require("../app/controllers/AlbumManagementController");
 const ArtistManagementController = require("../app/controllers/ArtistManagementController");
+
 // quản lí user
 router.get("/admin", usermanagementController.getAllUsers);
 router.post("/admin", usermanagementController.searchUsersByName);
+
+router.get("/user", usermanagementController.getAllUsers);
+
 router.post("/store", usermanagementController.store);
 router.get("/admin/:UserID/edit", usermanagementController.edit);
 router.post("/admin/:UserID/edit", usermanagementController.update);
@@ -17,6 +21,7 @@ router.post("/admin/:UserID", usermanagementController.deleteUser);
 
 //quản lí bài hát
 router.get("/admin/songmanagement", ContentManagementController.getAllMusic);
+
 router.post(
   "/admin/songmanagement/searchSong",
   ContentManagementController.searchSongByName
@@ -24,33 +29,34 @@ router.post(
 router.post(
   "/admin/songmanagement/addNewSong",
   ContentManagementController.addNewSong
+
 );
 
 router.get(
-  "/admin/songmanagement/:SongID/editsong",
-  ContentManagementController.editSong
+    "/admin/songmanagement/:SongID/editsong",
+    ContentManagementController.editSong
 );
 router.post(
-  "/admin/songmanagement/:SongID/editsong",
-  ContentManagementController.updateSong
+    "/admin/songmanagement/:SongID/editsong",
+    ContentManagementController.updateSong
 );
 router.post(
-  "/admin/songmanagement/:SongID",
-  ContentManagementController.deleteSong
+    "/admin/songmanagement/:SongID",
+    ContentManagementController.deleteSong
 );
 
 // quản lí playlist
 router.get(
-  "/admin/playlistmanagement",
-  PlaylistManagementController.getAllPlayList
+    "/admin/playlistmanagement",
+    PlaylistManagementController.getAllPlayList
 );
 router.post(
-  "/admin/playlistmanagement/addPlayList",
-  PlaylistManagementController.addPlayList
+    "/admin/playlistmanagement/addPlayList",
+    PlaylistManagementController.addPlayList
 );
 router.get(
-  "/admin/playlistmanagement/:PlaylistID/playlistsongmanagement",
-  PlaylistManagementController.playlistsong
+    "/admin/playlistmanagement/:PlaylistID/playlistsongmanagement",
+    PlaylistManagementController.playlistsong
 );
 router.post(
   "/admin/playlistmanagement/searchPlaylist",
@@ -60,12 +66,12 @@ router.post(
 //quản lí album
 router.get("/admin/albummanagement", AlbumManagementController.getAllAlbum);
 router.post(
-  "/admin/albummanagement/addAlbum",
-  AlbumManagementController.addAlbum
+    "/admin/albummanagement/addAlbum",
+    AlbumManagementController.addAlbum
 );
 router.get(
-  "/admin/albummanagement/:AlbumID/albumsongmanagement",
-  AlbumManagementController.albumsong
+    "/admin/albummanagement/:AlbumID/albumsongmanagement",
+    AlbumManagementController.albumsong
 );
 router.post(
   "/admin/albummanagement/searchAlbum",
@@ -75,12 +81,12 @@ router.post(
 //quản lí artist
 router.get("/admin/artistmanagement", ArtistManagementController.getAllArtist);
 router.post(
-  "/admin/artistmanagement/addArtist",
-  ArtistManagementController.addArtist
+    "/admin/artistmanagement/addArtist",
+    ArtistManagementController.addArtist
 );
 router.get(
-  "/admin/artistmanagement/:ArtistID/artistsongmanagement",
-  ArtistManagementController.artistSong
+    "/admin/artistmanagement/:ArtistID/artistsongmanagement",
+    ArtistManagementController.artistSong
 );
 router.post(
   "/admin/artistmanagement/searchArtist",
@@ -88,9 +94,9 @@ router.post(
 );
 
 router.get("/user", (req, res) => {
-  res.render("user", {
-    layout: false,
-  });
+    res.render("user", {
+        layout: false,
+    });
 });
 // router.post('/', (req, res) => {
 //     // Render trang đăng nhập mà không sử dụng layout và các partials
@@ -103,8 +109,9 @@ router.post("/", loginController.loginuser);
 router.get("/admin");
 
 router.get("/", (req, res) => {
-  // Render trang đăng nhập mà không sử dụng layout và các partials
-  res.render("login", { layout: false });
+
+    // Render trang đăng nhập mà không sử dụng layout và các partials
+    res.render("login", { layout: false });
 });
 
 module.exports = router;

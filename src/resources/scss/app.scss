@@ -348,8 +348,10 @@ header {
 
           a {
             img {
-              width: 50px;
+              width: 76px;
               margin-right: 24px;
+              border-radius: 10px;
+
             }
           }
 
@@ -597,6 +599,8 @@ header {
             transition: 0.3s;
             margin-bottom: 10px;
             display: block;
+            width: 140px;
+            min-height: 230px;
 
             .song {
               position: relative;
@@ -664,6 +668,8 @@ header {
             a {
               color: $text-color;
               font-size: 0.7em;
+              opacity: 0.8;
+
             }
 
             &:hover {
@@ -717,12 +723,15 @@ header {
         }
 
         .artist-list {
+          justify-content: left;
+
           .artist {
             padding: 10px;
             border-radius: 20px;
             transition: 0.3s;
             margin-bottom: 10px;
-
+            margin-right: 10px;
+            
             .song {
               position: relative;
 
@@ -905,6 +914,7 @@ header {
   position: fixed;
   background-color: rgba($bg-color, 0.8);
   display: none;
+  z-index: 1000;
 }
 
 .addplaylist {
@@ -1046,7 +1056,7 @@ body::-webkit-scrollbar-track {
 
 #home-mainpage {
   padding-top: 25px;
-  min-height: 2000px;
+  // min-height: 2000px;
 }
 #inframe {
   transition: 0.5s;
