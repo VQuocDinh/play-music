@@ -201,7 +201,7 @@ header {
       margin-right: 10px;
       cursor: pointer; }
   header form {
-    width: 50%; }
+    width: 500px; }
     header form .input-group {
       background-color: #292c35;
       padding: 10px;

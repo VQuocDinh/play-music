@@ -82,7 +82,7 @@
             <div class="media-right">
               <span class="time">{{song_time}}</span>
               <button class="heart"><i class="fa-solid fa-heart unlike"></i></button>
-              <button><i class="fa-solid fa-plus plus"></i></button>
+              <button class="plusSong" data-id="{{song_id}}"><i class="fa-solid fa-plus plus"></i></button>
             </div>
           </div>
           {{/each}}
@@ -132,21 +132,16 @@
 <div class="modal-2 ">
   <div class="addToPlaylist">
     <input type="text" placeholder="Search Playlist" id="playlistName">
-    <div class="list-item flex a-center">
+    {{#each playlists}}
+    <div data-id="{{PlaylistID}}" class="list-item flex a-center">
       <i class="fa-solid fa-list"></i>
-      <h3>Nhạc vui</h3>
+      <h3>{{Name}}</h3>
     </div>
-    <div class="list-item flex a-center">
-      <i class="fa-solid fa-list"></i>
-      <h3>Nhạc vui</h3>
-    </div>
-    <div class="list-item flex a-center">
-      <i class="fa-solid fa-list"></i>
-      <h3>Nhạc vui</h3>
-    </div>
+    {{/each}}
+    <button type="button" id="btns-Save">Save</button>
   </div>
 </div>
-
+<form method="post" id="add-song-to-playlist"></form>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

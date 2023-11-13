@@ -40,12 +40,12 @@ new Chart("myChart", {
 });
 
 //Khai báo biến
-const loginEle = document.getElementById("login");
-const mediaListELe = document.querySelector(".media-list");
-const addPlayListEle = document.getElementById("add-playlist");
-const ModalEle = document.querySelector(".modal");
-const Modal2Ele = document.querySelector(".modal-2");
-const heartEle = document.querySelectorAll(".heart");
+// const loginEle = document.getElementById("login");
+// // const mediaListELe = document.querySelector(".media-list");
+// // const addPlayListEle = document.getElementById("add-playlist");
+// const ModalEle = document.querySelector(".modal");
+// const Modal2Ele = document.querySelector(".modal-2");
+// const heartEle = document.querySelectorAll(".heart");
 
 //click heart
 [...heartEle].forEach((val) => {

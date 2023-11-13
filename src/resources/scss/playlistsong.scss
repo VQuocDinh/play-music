@@ -27,7 +27,7 @@ button {
 
     .logo {
       width: 105px;
-      
+
 
     }
 
@@ -46,7 +46,7 @@ button {
         font-size: 0.875em;
         font-style: normal;
         font-weight: 700;
-        margin-top: 16px;
+        margin: 22px 0;
         transition: 0.3s;
 
         &:hover {
@@ -120,6 +120,8 @@ button {
       padding: 5px;
       border: 1px solid $text-color;
       transition: 0.3s;
+      bottom: 0;
+      position: absolute;
 
       &:hover {
         background-color: $bg-color;
@@ -160,8 +162,10 @@ button {
 
   .control-bar {
     //width: 1000px;
-    flex-direction: column;
-    margin-right: 400px;
+    flex-direction: row !important;
+    position: fixed;
+    margin-left: 560px;
+    // margin-right: 400px;
 
     .actions {
       margin-bottom: 10px;

@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const connection = mysql.createConnection({
   host: "localhost", // Thay đổi thông tin kết nối theo cấu hình của bạn
   user: "root",
-  database: "play-music",
+  database: "play-music-final",
 
 });
 

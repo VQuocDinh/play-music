@@ -471,6 +471,7 @@ header {
   text-align: center;
   border-radius: inherit;
   background: inherit;
-  background-clip: text;
+  color: #ffffff;
+  background-color: #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }

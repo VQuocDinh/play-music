@@ -2,39 +2,65 @@ let musicList = [
   {
 
       id: 1,
-      src: "http://localhost:3000/play/tai-vi-sao",            
+      src: "http://localhost:3000/play/tai-vi-sao",   
+      name: "Tai Vi Sao - MCK",
+      artist: "MCK",  
+      img : "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/e/5/4/ae54e556fabe7740b12186c68cc95fd9.jpg",
     },
   {
     id: 2,
     src: "http://localhost:3000/play/tay-lai-pro",
-
+    name: "Tay lai pro",
+      artist: "Double2T",
+      img : "https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/b/f/0/1/bf0182328238f2a252496a63e51f1f74.jpg",  
   },
     {
     id:3,
     src: "http://localhost:3000/play/rolling-down",
+    name: "Rowling Down - MCK",  
+      artist: "Captain",
+      img : "https://avatar-ex-swe.nixcdn.com/song/2023/08/18/9/e/a/8/1692368496464_500.jpg",  
   }, {
     id:4,
     src: "http://localhost:3000/play/nguoi-duoc-chon",
+    name: "Người được chọn",
+      artist: "Team Bray",
+      img :  "https://i.scdn.co/image/ab67616d00001e027d405a233dff5392665e5a61",  
   },
   {
     id: 5,
     src: "http://localhost:3000/play/ai-cung-co-the-la-quan-quan",
+    name: "Ai cũng có thể là quán quân",
+      artist: "Huynh Cong Hieu",
+      img : "https://i.scdn.co/image/ab67616d00001e022103bdcdf1d4369f212b6862",  
   },
   {
     id: 6,
     src: "http://localhost:3000/play/teeth",
+    name: "5 Seconds of Summer",
+      artist: "teeth",
+      img : "https://i.scdn.co/image/ab67616d00001e02ae9f6efe502c816fa98bc214",  
   },
   {
     id: 7,
     src: "http://localhost:3000/play/mien-che",
+    name: "Miễn chê",
+      artist: "Teez",
+      img : "ttps://avatar-ex-swe.nixcdn.com/song/2023/09/09/9/1/e/5/1694255781566_500.jpg",  
   },
   {
     id: 8,
     src: "http://localhost:3000/play/making-my-way-son-tung-m-tp",
+    name: "Making my way",
+      artist: "Song Tung",
+      img : "https://avatar-ex-swe.nixcdn.com/song/2023/01/10/7/e/e/d/1673338760183_500.jpg",  
   },
   {
     id: 9,
     src: "http://localhost:3000/play/TheresNoOneAtAll-SonTungMTP-7583837",
+    name: "Theres No One At All",
+      artist: "Son Tung",
+      img : "https://avatar-ex-swe.nixcdn.com/song/2023/01/10/7/e/e/d/1673338760183_500.jpg",  
   },
 ];
 
@@ -58,14 +84,16 @@ const wrapper = document.querySelector(".main-page"),
   lyrics = document.querySelector(".lyrics"),
   lyricsBtn = document.querySelector(".lyrics-details_btn");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const playPauseBtn = document.querySelector(".play-pause");
-  playPauseBtn.addEventListener("click", () => {
-    const isMusicPaused = wrapper.classList.contains("paused");
-    isMusicPaused ? pauseMusic() : playMusic();
-    playingNow();
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const playPauseBtn = document.querySelector('.play-pause');
+    const wrapper = document.querySelector(".bottom-section");
+    playPauseBtn.addEventListener("click", () => {
+        const isMusicPaused = wrapper.classList.contains("paused");
+        isMusicPaused ? pauseMusic() : playMusic();
+        playingNow();
+    });
   });
-});
 //  click vào phần tưe khi hiện ra thẻ div
 
 function clicked(element) {
@@ -83,39 +111,54 @@ function clicked(element) {
 //   loadMusic(lyric);
   
 // }
-document.addEventListener("DOMContentLoaded", function() {
-function pauseMusic() {
-  const playPauseBtn = document.querySelector(".play-pause");
-  wrapper.classList.remove("paused");
-  playPauseBtn.querySelector("i").innerText = "play_arrow";
-  mainAudio.pause();
-
-  }
-});
 
 
 // play
 
 function playMusic() {
   const mainAudio = document.getElementById("main-audio");
-  const playPauseBtn = document.querySelector(".play-pause");
+  const playPauseBtn = document.querySelector('.play-pause');
+  const wrapper = document.querySelector(".bottom-section");
   wrapper.classList.add("paused");
   playPauseBtn.querySelector("i").innerText = "pause";
   mainAudio.play();
 }
 
-function loadMusic(indexNumb) {
-  // musicName.innerText = musicList[indexNumb - 1].name;
-  // musicName.setAttribute("title", musicList[indexNumb - 1].name);
-  // musicArtist.innerText = musicList[indexNumb - 1].artist;
+
+function pauseMusic() {
   const mainAudio = document.getElementById("main-audio");
-  mainAudio.src = musicList[indexNumb - 1].src;
+  const playPauseBtn = document.querySelector('.play-pause');
+  const wrapper = document.querySelector(".bottom-section");
+  wrapper.classList.remove("paused");
+  playPauseBtn.querySelector("i").innerText = "play_arrow";
+  mainAudio.pause();
 }
 
-function loadLyic(lyric) {
-  const textContainer = document.querySelector(".lyrics");
-  textContainer.li = lyric;
+
+
+
+function loadMusic(indexNumb) {
+  musicName = document.querySelector(" .name"),
+    musicArtist = document.querySelector(" .artist"),
+    musicImg = document.querySelector(".img-music");
+  musicName.innerText = musicList[indexNumb - 1].name;
+  musicArtist.innerText = musicList[indexNumb - 1].artist;
+  musicImg.src= musicList[indexNumb-1].img;
+  const textContainer = document.querySelector(".lyrics")
+  const mainAudio = document.getElementById("main-audio");
+  mainAudio.src = musicList[indexNumb - 1].src;
+//   if (!(musicList[indexNumb - 1].lyric.length === 0)) {
+//     let spans = musicList[indexNumb - 1].lyric?.map((text) => `<span>${text}</span>`)
+//     textContainer.innerHTML = spans.join("");
+// } else {
+//     textContainer.innerHTML = `<span>Lyrics are being updated</span>`;
+// }
 }
+
+// function loadLyic(lyric) {
+//   const textContainer = document.querySelector(".lyrics");
+//   textContainer.li = lyric;
+// }
 
 function playingNow() {
   const divList = document.querySelector(".media-list");
@@ -138,8 +181,10 @@ function playingNow() {
 
 // lyric
 document.addEventListener("DOMContentLoaded", function () {
-  const textContainer = document.querySelector(".lyrics"),
-    lyricsBtn = document.querySelector(".lyrics-details_btn");
+  const wrapper = document.querySelector(".bottom-section");
+  const lyricsBtn = document.querySelector(".lyrics-details_btn"),
+  lyricsBox = document.querySelector(".music-lyric");
+    
   lyricsBtn.addEventListener("click", () => {
     lyricsBox.classList.toggle("show");
     lyricsBox.classList.contains("show")

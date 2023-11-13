@@ -1030,6 +1030,12 @@ header {
         }
       }
     }
+    .btn-active {
+      background-color: $text-color-bold;
+      opacity: 0.8;
+      border-radius: 20px;
+      color: #333;
+    }
   }
 }
 
@@ -1050,8 +1056,21 @@ body::-webkit-scrollbar-track {
 } 
 
 
-#main-section {
-  
+#btns-Save {
+  padding: 10px 20px;
+  color: $text-color;
+  border: 1px solid $text-color-bold;
+  margin-bottom: 30px;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: $text-color-bold;
+    color: $bg-color;
+    border-radius: 20px;
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 #home-mainpage {

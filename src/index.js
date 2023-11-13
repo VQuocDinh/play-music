@@ -35,32 +35,32 @@ spotifyApi.clientCredentialsGrant()
   });
 
 // Tạo các route để lấy dữ liệu từ Spotify API
-app.get('/search', (req, res) => {
-  const query = req.query.query; // từ khóa tìm kiếm  
-  spotifyApi.searchTracks(query)
-    .then(data => {
-      //const firstTrack = data.body.tracks.items[0];
-      res.render('searchresult', { tracks: data.body.tracks.items });
-      // res.json(data.body.tracks.items)
-    })
-    .catch(error => {
-      res.status(400).json({ error: 'Lỗi tìm kiếm.' });
-    });
+// app.get('/search', (req, res) => {
+//   const query = req.query.query; // từ khóa tìm kiếm  
+//   spotifyApi.searchTracks(query)
+//     .then(data => {
+//       //const firstTrack = data.body.tracks.items[0];
+//       res.render('searchresult', { tracks: data.body.tracks.items });
+//       // res.json(data.body.tracks.items)
+//     })
+//     .catch(error => {
+//       res.status(400).json({ error: 'Lỗi tìm kiếm.' });
+//     });
 
 
-});
+// });
 
-app.get('/track/:id', (req, res) => {
-  const trackId = req.params.id; // ID của bài hát
-  spotifyApi.getTrack(trackId)
-    .then(data => {
-      // res.json(data.body);
-      res.render('searchresult', {})
-    })
-    .catch(error => {
-      res.status(400).json({ error: 'Lỗi lấy thông tin bài hátt.' });
-    });
-});
+// app.get('/track/:id', (req, res) => {
+//   const trackId = req.params.id; // ID của bài hát
+//   spotifyApi.getTrack(trackId)
+//     .then(data => {
+//       // res.json(data.body);
+//       res.render('searchresult', {})
+//     })
+//     .catch(error => {
+//       res.status(400).json({ error: 'Lỗi lấy thông tin bài hátt.' });
+//     });
+// });
 
 // // Get music list from csv file
 // const songs = [];
@@ -119,23 +119,23 @@ fs.createReadStream('D:/code-workspace/vscode/play-music-final/Music_Recommender
   });
 
 // Endpoint để xử lý tìm kiếm bài hát
-app.get('/search', (req, res) => {
-  const searchTerm = req.query.query;
+// app.get('/search', (req, res) => {
+//   const searchTerm = req.query.query;
 
-  if (!searchTerm) {
-    return res.status(400).send('Please provide a search term.');
-  }
+//   if (!searchTerm) {
+//     return res.status(400).send('Please provide a search term.');
+//   }
 
-  // Tìm kiếm trong mảng songs
-  const searchResults = songs.filter(song => {
-    return (
-      song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
-    );
-  });
-  res.render('searchresult', { searchResults })
-  //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
-});
+//   // Tìm kiếm trong mảng songs
+//   const searchResults = songs.filter(song => {
+//     return (
+//       song.song.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//       song.artist.toLowerCase().includes(searchTerm.toLowerCase()) // Kiểm tra tồn tại trường title trước khi sử dụng includes
+//     );
+//   });
+//   res.render('searchresult', { searchResults })
+//   //res.json(searchResults); // Trả về kết quả tìm kiếm dưới dạng JSON
+// });
 
 app.get('/play/:songName', (req, res) => {
   const songName = req.params.songName;

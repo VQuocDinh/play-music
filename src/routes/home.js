@@ -16,7 +16,7 @@ const loginController = require('../app/controllers/LoginController')
 
 router.get('/play/:songName', homeController.index)
 router.post('/receive_data', homeController.receiveData)
-router.get('/search', homeController.search)
+router.get('/search', homeController.searchSong)
 router.get('/madeforyou', homeController.madeforyou)
 router.post('/addPlaylist', homeController.addPlaylist)
 router.get('/', homeController.getHomePage)

@@ -2,6 +2,7 @@ const Home = require("../models/Home");
 const Playlist = require("../models/Playlist");
 const Artist = require("../models/Artist");
 const Topchart = require("../models/Songs");
+const db = require("../../config/db");
 
 const songData = [];
 
@@ -53,9 +54,9 @@ const HomeController = {
 
           const data = {
             username: "user",
-            playlists: playlists,
-            artists: artists,
-            topchart: topchart,
+            playlists: playlists.slice(0,5),
+            artists: artists.slice(0,5),
+            topchart: topchart.slice(0,5),
           };
 
           res.render('home', { data, songData: songData.slice(0,5), playlists })
@@ -102,7 +103,7 @@ const HomeController = {
   },
 
 
-  search(req, res) {
+  searchSong(req, res) {
     const searchQuery = req.query.query;
 
     if (!searchQuery) {
@@ -139,9 +140,9 @@ const HomeController = {
 
   addSongToPlayList(req, res, next) {
     const SongID = req.params.SongID;
-    const PLatlistID = req.params.PLatlistID;
-    res.json(SongID, PLatlistID);
-    const query = "INSERT INTO playlistsong (PLayListID, SongID) VALUES (?, ?)";
+    const PlayListID = req.params.PlayListID;
+    const values = [SongID, PlayListID];
+    const query = "INSERT INTO playlistsong (SongID,PlayListID) VALUES (?, ?)";
     db.query(query, values, (err, results) => {
       if (err) {
         console.error("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu:", err);

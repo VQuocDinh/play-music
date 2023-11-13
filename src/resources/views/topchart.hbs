@@ -1,6 +1,9 @@
+{{!--
+
 <head>
-    <link rel="stylesheet" href="/css/topchart.css" />
-</head>
+    {{!--
+    <link rel="stylesheet" href="/css/topchart.css" /> --}}
+</head> --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
@@ -43,32 +46,37 @@
                 )
             );
         </script>
+        <div class="bottom-section">
+            <div class="media-list">
+                {{#each result}}
 
-        <div class="media-list">
+                <div li-index="{{song_id}}">
+                    <div class="media-item flex a-center j-between">
+                        <div class="media-left flex a-center ">
+                            <a href=" "><img src="{{song_img}}" alt=""></a>
+                            <div class="detail">
+                                <h3>{{song_name}}</h3>
+                                <a href=""></a>
+                            </div>
+                            <audio id="main-audio" class="" src="" type="audio/mpeg"></audio>
 
-
-            {{#each songs}}
-            {{!-- <div li-index="{{song_id}}"> --}}
-                <div class="media-item flex a-center j-between">
-                    <div class="media-left flex a-center ">
-                        <span class="rank is-top-1">{{sum @index 1}}</span>
-                        <a href=""><img src="{{song_img}}" alt=""></a>
-                        <div class="detail">
-                            <h3>{{song_name}}</h3>
-                            <a href="">{{artist_name}}</a>
+                            <span class="audio-duration"></span>
+                        </div>
+                        <div class="media-right">
+                            <span class="time" id="">{{song_time}} </span>
+                            <button class="heart "><i class="fa-solid fa-heart unlike"></i></button>
+                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
                         </div>
                     </div>
-                    <div class="media-right">
-                        <span class="time">{{song_time}}</span>
-                        <button class="heart "><i class="fa-solid fa-heart unlike"></i></button>
-                        <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                    </div>
                 </div>
-                {{!--
-            </div> --}}
-            {{/each}}
+
+                {{/each}}
+            </div>
         </div>
 
+        <div class="music-lyric">
+            <div class="lyrics"></div>
+        </div>
         {{!-- {{/each}} --}}
 
 </div>
@@ -78,25 +86,26 @@
 
 
 <div class="modal-2 ">
-        <div class="addToPlaylist">
-            <input type="text" placeholder="Search Playlist" id="playlistName">
-            <div class="list-item flex a-center">
-                <i class="fa-solid fa-list"></i>
-                <h3>Nhạc vui</h3>
-            </div>
-            <div class="list-item flex a-center">
-                <i class="fa-solid fa-list"></i>
-                <h3>Nhạc vui</h3>
-            </div>
-            <div class="list-item flex a-center">
-                <i class="fa-solid fa-list"></i>
-                <h3>Nhạc vui</h3>
-            </div>
+    <div class="addToPlaylist">
+        <input type="text" placeholder="Search Playlist" id="playlistName">
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
+        </div>
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
+        </div>
+        <div class="list-item flex a-center">
+            <i class="fa-solid fa-list"></i>
+            <h3>Nhạc vui</h3>
         </div>
     </div>
-{{!--
-<script src="/js/madeforyou.js"></script> --}}
+</div>
+
+<script src="/js/madeforyou.js"></script>
 <script src="/js/topchart.js">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>

@@ -42,7 +42,10 @@
   
   .timer-duration {
     margin-top: 2px;
-  }
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+}
   .timer-duration span {
     font-size: 13px;
   }

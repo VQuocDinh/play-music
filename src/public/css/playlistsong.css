@@ -80,7 +80,7 @@ button {
       font-size: 0.875em;
       font-style: normal;
       font-weight: 700;
-      margin-top: 16px;
+      margin: 22px 0;
       transition: 0.3s; }
       .slide-page .Menu .menu-list a:hover {
         transform: translateX(10px); }
@@ -128,7 +128,9 @@ button {
       border-radius: 10px;
       padding: 5px;
       border: 1px solid #ffdecd;
-      transition: 0.3s; }
+      transition: 0.3s;
+      bottom: 0;
+      position: absolute; }
       .slide-page #Library #add-playlist:hover {
         background-color: #17181d;
         opacity: 0.8;
@@ -150,8 +152,9 @@ button {
     color: #ffdecd;
     font-size: 0.7em; }
   .player-control .control-bar {
-    flex-direction: column;
-    margin-right: 400px; }
+    flex-direction: row !important;
+    position: fixed;
+    margin-left: 560px; }
     .player-control .control-bar .actions {
       margin-bottom: 10px; }
       .player-control .control-bar .actions button {

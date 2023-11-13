@@ -1,227 +1,80 @@
 <div class="main-page">
-        <section>
-            <div class="title flex a-center">
-                <h2>Favourite</h2>
-                <button id="play">
-                    <i class="fa-solid fa-caret-right"></i>
-                </button>
-            </div>
-            <div class="Music flex a-center ">
 
-                {{#each favouritesong}}
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">{{Name}}</a>
-                    <span href="">{{Derva}}</span>
-                </div>
-                {{/each}}
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
+    <section>
+        <div class="title flex a-center">
+            <h2>FAVOURITE SONG</h2>
+            <button id="play">
+                <i class="fa-solid fa-caret-right"></i>
+            </button>
+        </div>
+        {{!-- <div class="title-2 flex a-center">
+            <div class="song style">
+                <h4>Song</h4>
+            </div>
+            <div class="album style">
+                <h4>Album</h4>
+            </div>
+            <div class="line"></div>
+        </div> --}}
+        {{!-- <nav>
+            <ul class="flex a-center">
+                <li class="active">All</li>
+                <li class="unactive">Viet Nam</li>
+                <li class="unactive">US-UK</li>
+                <li class="unactive">Korean</li>
+            </ul>
+        </nav> --}}
+
+        <div class="media-list">
+            {{!-- {{#each tracks}}
+            <div class="song">
+                <div li1="{{song_lyric}}">
+                    <div li-index="{{song_id}}">
+                        <div class="media-item flex a-center j-between">
+                            <div class="media-left flex a-center">
+                                <a href="{{external_urls.spotify}}"><img src="{{album.images.[0].url}}"
+                                        alt="{{name}}"></a>
+                                <div class="detail">
+                                    <h3>{{this.id}}</h3>
+                                    <a href="">{{type}}</a>
+                                </div>
+                                <audio class="main-audio" src="{{preview_url}}" type="audio/mpeg"></audio>
+                                <span class="audio-duration">{{song_time}}</span>
+                            </div>
+                            <div class="media-right">
+                                <span class="time">{{song_time}}</span>
+                                <button class="heart"><i class="fa-solid fa-heart like"></i></button>
+                                <button class="plus"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="titile-2 flex a-center ">
-                <h3>My PLaylist </h3>
-                <button class="add">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
+            {{/each}} --}}
+
+            {{#each favouritesong}}
+            <div class="media-item flex a-center j-between">
+                <div class="media-left flex a-center">
+                    <img src="{{song_img}}" alt=""></a>
+                    <div class="detail">
+                        <h3>{{song_name}}</h3>
+                        <a href="">{{artist_name}}</a>
+                        {{!-- <h4>{{album.artists.[0].name}}</h4> --}}
+                    </div>
+                    {{!-- <audio class="main-audio" src="{{preview_url}}" type="audio/mpeg"></audio> --}}
+                    {{!-- <span class="audio-duration">{{song_time}}</span> --}}
+                </div>
+                <div class="media-right">
+                    {{!-- <span class="time">{{song_time}}</span> --}}
+                    {{!-- <button class="heart"><i class="fa-solid fa-heart "></i></button> --}}
+                    <button class="plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
-            <div class="Music flex a-center ">
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href="../album/album.html"><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-                <div class="list-song ">
-                    <a class="song" href=""><img src=" ../image/Rectangle 5.png" alt=""></a>
-                    <a href="" class="name-list">Ghostmusic</a>
-                    <span href="">Derva</span>
-                </div>
-            </div> -->
-            <!-- <div class="bottom-section">
-                <h3>Bài hát</h3>
-                <div class="line"></div>
-                <nav>
-                    <ul class="flex a-center">
-                        <li class="active favourite">Yêu thích</li>
-                        <li class="hover suggest">Gợi ý</li>
-                    </ul>
-                </nav>
-                <div class="media-list">
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart"><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                    <div class="media-item flex a-center j-between">
-                        <div class="media-left flex a-center ">
-                            <a href=""><img src="../image/Rectangle 33.png" alt=""></a>
-                            <div class="detail">
-                                <h3>Ghostmusic</h3>
-                                <a href="">Derva</a>
-                            </div>
-                        </div>
-                        <div class="media-right">
-                            <span class="time">2:10</span>
-                            <button class="heart "><i class="fa-solid fa-heart like"></i></button>
-                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </section>
-    </div>
+            {{/each}}
+
+        </div>
+        <div class="music-lyric">
+            <div class="lyrics"></div>
+        </div>
+    </section>
+</div>

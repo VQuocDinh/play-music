@@ -7,7 +7,8 @@ const MadeforyouController= {
           res.status(500).json({ error: err.message });
           return;
         }
-        res.render('madeforyou',{result})
+        // res.render('topchart',{result})
+        res.json(result)
       });
     },
 }

@@ -13,36 +13,29 @@
             <div class="line"></div>
         </div> --}}
         <div class="media-list">
-            {{#each tracks}}
-            {{!-- <div class="media-item flex a-center j-between">
-                <div class="media-left flex a-center">
-                    <img src="{{album.images.[0].url}}" alt="{{name}}"></a>=
-                    <div class="detail">
-                        <h3>{{name}}</h3>
-                        <h4>{{album.artists.[0].name}}</h4>
-                        <button id="playButton">Phát nhạc</button>
-                        {{!-- <a id="playButton" href="/track/{{id}}">Phát nhạc</a> --}}
-                    {{!-- </div>
-                    <audio class="main-audio" src="{{preview_url}}" type="audio/mpeg"></audio>
-                    <span class="audio-duration">{{song_time}}</span>
+            {{#each searchresults}}
+
+                <div li-index="{{song_id}}">
+                    <div class="media-item flex a-center j-between">
+                        <div class="media-left flex a-center ">
+                            <a href=" "><img src="{{song_img}}" alt=""></a>
+                            <div class="detail">
+                                <h3>{{song_name}}</h3>
+                                <a href="">{{artist_name}}</a>
+                            </div>
+                            <audio id="main-audio" class="" src="" type="audio/mpeg"></audio>
+
+                            <span class="audio-duration"></span>
+                        </div>
+                        <div class="media-right">
+                            <span class="time" id="">{{song_time}} </span>
+                            <button class="heart "><i class="fa-solid fa-heart unlike"></i></button>
+                            <button class="plus"><i class="fa-solid fa-plus "></i></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="media-right">
-                    <span class="time">{{song_time}}</span>
-                    <button class="heart"><i class="fa-solid fa-heart like"></i></button>
-                    <button class="plus"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div> --}} 
-            <iframe src="https://open.spotify.com/embed/track/{{id}}?utm_source=generator&theme=0" width="100%"
-                height="100" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
-                loading="lazy"></iframe>
-            {{!-- <div id="spotifyPlayer"></div> --}}
-            {{!-- <iframe style="border-radius:12px"
-                src="https://open.spotify.com/embed/album/7DV6IlRgMYVLkNXjHyUZ9b?utm_source=generator&theme=0"
-                width="100%" height="352" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe> --}}
-            {{/each}}
+
+                {{/each}}
 
 
         </div>
@@ -51,11 +44,11 @@
 
 <script src="/js/madeforyou.js"></script>
 
-<script>
+{{!-- <script>
     function playMusic() {
         // Thay đổi nội dung của thẻ div để chèn iframe sau khi click nút
         document.getElementById('spotifyPlayer').innerHTML = '<iframe src="https://open.spotify.com/embed/track/{{id}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>';
     }
 
     document.getElementById('playButton').addEventListener('click', playMusic);
-</script>
+</script> --}}
